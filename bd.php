@@ -19,7 +19,7 @@ class BD{
 		mysql_select_db($this->base,$this->conexion) or
 		  die("Problemas en la seleccion de la base de datos");
 		  
-		//echo "Conexion exitosa a la BD";
+		//echo "Conexion exitosa a la BD"; esto lo comento porque muestra en la pantalla
 	}
 	
 	public function desconectar(){
