@@ -1,3 +1,5 @@
+//Esta clase está mala >:o
+
 <?php
 class Controlador_logueo{
 	private $acceso;	// boolean
