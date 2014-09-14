@@ -28,7 +28,7 @@ echo "Ingrese una contrase&ntilde;a<br>";
 			</form>
 			
 	<div class="login-help">
-    <a href="#">Olvid&eacute; mi contrase&ntilde;a</a>
+    <a href="php/Contra.php">Olvid&eacute; mi contrase&ntilde;a</a>
 	</div>	
 </div>
 
