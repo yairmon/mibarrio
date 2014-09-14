@@ -23,6 +23,17 @@ class Modelo_Logueo{
 		}
 		$this->logueo->set_Acceso($salida);
 	}
+
+	// Void: Asigna en Controlador_Logueo la pregunta
+	public function pregunta_Usuario($usuario){
+		$salida = "";
+		$sql = "select Usuario,Pregunta from usuarios where Usuario='$usuario'";
+		$registros = $this->bd->consultar($sql);
+		if($reg=mysql_fetch_array($registros)){
+			$salida = $reg['Pregunta'];
+		}
+		$this->logueo->set_Pregunta($salida);
+	}
 	
 	// void
 	public function identifica_Perfil($usuario){
