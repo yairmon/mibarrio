@@ -26,7 +26,7 @@ class Modelo_Logueo{
 	
 	// void
 	public function identifica_Perfil($usuario){
-	
+	//Comentario
 	}
 	
 	public function restaurar_Contra($usuario_pregunta, $usuario_respuesta){
