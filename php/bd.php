@@ -34,7 +34,7 @@ class BD{
 	
 	public function consultar($sql){
 		$registros = mysql_query($sql,$this->conexion) 
-		 or die("Problemas al consultar:".mysql_error());
+		 or die("<br>Problemas al consultar:".mysql_error());
 		 
 		return $registros;
 	}
