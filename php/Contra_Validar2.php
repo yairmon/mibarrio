@@ -24,7 +24,9 @@
 			echo '<p><a href="../index.php">Regresar</a>';
 		}
 		else{
-			echo "<p>Su contrase&ntilde;a es:<p>$contra";
+			echo "<div class='login-help'>
+			<h1>Su contrase&ntilde;a es:</h1><br>
+			<p>$contra</div>";
 			echo '<p><a href="../index.php">Regresar</a>';
 		}
 

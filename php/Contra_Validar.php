@@ -26,10 +26,10 @@
 			if ($pregunta=="")
 				header("Location: Contra.php?error=1");
 			else{
-				echo "<br>La pregunta es: ";
-				echo '<input type="text" name="pregu" value="'.$pregunta.'" readonly>';
-				echo "<br>Respuesta:";
-				echo '<input type="text" name="respues" placeholder="respuesta">';
+					echo "<br>La pregunta es: ";
+					echo '<input type="text" name="pregu" value="'.$pregunta.'" readonly>';
+					echo "<br>Respuesta:";
+					echo '<input type="text" name="respues" placeholder="respuesta">';
 			}
 			if (isset($_REQUEST['error']))
 				echo "La respuesta es incorrecta<br>";
