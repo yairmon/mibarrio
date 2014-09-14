@@ -13,7 +13,7 @@ class Modelo_Logueo{
 	// Boolean
 	public function valida_Usuario($usuario, $contra){
 		$salida = false;
-		$sql = "select nombre,pass, mail from usuarios where nombre='$usuario'";
+		$sql = "select Usuario,Password, mail from usuarios where nombre='$usuario'";
 		$registros = $this->bd->consultar($sql);
 		while($reg=mysql_fetch_array($registros)){
 			if($contra == $reg['pass']){
