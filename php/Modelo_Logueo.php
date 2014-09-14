@@ -25,11 +25,11 @@ class Modelo_Logueo{
 	}
 
 	// Void: Asigna en Controlador_Logueo la pregunta
-	public function pregunta_Usuario($usuario){
+	public function pregunta_Usuario($documento){
 		$salida = "";
 		try{
 
-			$sql = "select Usuario,Pregunta from usuarios where Usuario='$usuario'";
+			$sql = "select Usuario,Pregunta from usuarios where numDocumento='$documento'";
 			$registros = $this->bd->consultar($sql);
 			while($reg=mysql_fetch_array($registros)){
 				$salida = $reg['Pregunta'];
@@ -39,7 +39,7 @@ class Modelo_Logueo{
 			echo "Error en la funcion pregunta_Usuario()";
 		}
 
-		$this->logueo->set_Pregunta($salida);
+		return $salida;
 	}
 	
 	// void
@@ -48,12 +48,12 @@ class Modelo_Logueo{
 	}
 	
 	// String: Devuelve la contraseña si, la pregunta y la respuesta estan bien
-	public function restaurar_Contra($usuario, $pregunta, $respuesta){
-		$salida = "";
+	public function restaurar_Contra($documento, $pregunta, $respuesta){
+		$salida = "NOt";
 		$sql = "select Usuario,Pregunta,Respuesta, Password
-		 from usuarios where Usuario = '$usuario'";
+		 from usuarios where numDocumento = '$documento'";
 		$registros = $this->bd->consultar($sql);
-		while($reg = mysql_fetch_array($registros)){
+		if($reg = mysql_fetch_array($registros)){
 			$v_pregunta = $reg['Pregunta'];
 			$v_respuesta = $reg['Respuesta'];
 			$v_contra = $reg['Password'];
