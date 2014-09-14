@@ -1,6 +1,6 @@
 <?php
 
-class Controlador_Usuario{
+class Controlador_Perfil{
 	private $nombre; 			// String
 	private $permiso_Sistema;	// boolean
 	private $permiso_Perfiles;	// boolean
