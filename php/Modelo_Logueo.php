@@ -27,6 +27,7 @@ class Modelo_Logueo{
 	// void
 	public function identifica_Perfil($usuario){
 		//comin
+		// Este comentario no me gustó
 	
 	}
 	
