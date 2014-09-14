@@ -1,6 +1,6 @@
 <?php
 
-class Controlador_Usuario{
+class Modelo_Perfil{
 	private $perfil; 	// Tipo: Control_Perfil
 	
 	public function crear_Perfil($perfi){

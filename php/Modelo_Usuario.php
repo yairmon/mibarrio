@@ -1,6 +1,6 @@
 <?php
 
-class Controlador_Usuario{
+class Modelo_Usuario{
 	private $usuario;	// Tipo: Controlador_Usuario
 	
 	public function __construct($control_Usuario){
