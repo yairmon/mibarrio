@@ -2,18 +2,18 @@
 include 'bd.php';
 class Modelo_Logueo{
 	private $bd;
-	private $logueo;
+	private $logueo;	// Tipo: Controlador_Logueo
 
-	public function __construct($controlador_logueo){
+	public function __construct($controlador_logueo=NULL){
 		$this->bd = new BD("base1","root");
 		$this->bd->conectar();
 		$this->logueo = $controlador_logueo;
 	}
 	
-	// Boolean
+	// Void: Guarda en Controlador_Logueo si el acceso es true o false
 	public function valida_Usuario($usuario, $contra){
 		$salida = false;
-		$sql = "select Usuario,Password, mail from usuarios where Usuario='$usuario'";
+		$sql = "select Usuario,Password from usuarios where Usuario='$usuario'";
 		$registros = $this->bd->consultar($sql);
 		while($reg=mysql_fetch_array($registros)){
 			if($contra == $reg['Password']){
@@ -47,8 +47,20 @@ class Modelo_Logueo{
 	//Comentario
 	}
 	
-	public function restaurar_Contra($usuario_pregunta, $usuario_respuesta){
-		
+	// String: Devuelve la contraseña si, la pregunta y la respuesta estan bien
+	public function restaurar_Contra($usuario, $pregunta, $respuesta){
+		$salida = "";
+		$sql = "select Usuario,Pregunta,Respuesta, Password
+		 from usuarios where Usuario = '$usuario'";
+		$registros = $this->bd->consultar($sql);
+		while($reg = mysql_fetch_array($registros)){
+			$v_pregunta = $reg['Pregunta'];
+			$v_respuesta = $reg['Respuesta'];
+			$v_contra = $reg['Password'];
+			if($v_pregunta == $pregunta && $v_respuesta == $respuesta)
+				$salida = $v_contra;
+		}
+		return $salida;
 	}
 	
 	public function get_Logueo(){
