@@ -51,7 +51,7 @@ class Controlador_Usuario{
 		return $this->tipo_identificacion;
 	}
 	
-	public function get_N_Id(){
+	public function get_Nid(){
 		return $this->n_identificacion;
 	}
 	

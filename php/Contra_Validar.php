@@ -29,6 +29,8 @@
 			echo "<br>Respuesta:";
 			echo '<input type="text" name="respues" placeholder="respuesta">';
 		}
+		if (isset($_REQUEST['error']))
+			echo "La respuesta es incorrecta<br>";
 
 	?>
 <br>
