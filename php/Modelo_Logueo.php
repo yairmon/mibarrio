@@ -27,11 +27,18 @@ class Modelo_Logueo{
 	// Void: Asigna en Controlador_Logueo la pregunta
 	public function pregunta_Usuario($usuario){
 		$salida = "";
-		$sql = "select Usuario,Pregunta from usuarios where Usuario='$usuario'";
-		$registros = $this->bd->consultar($sql);
-		if($reg=mysql_fetch_array($registros)){
-			$salida = $reg['Pregunta'];
+		try{
+
+			$sql = "select Usuario,Pregunta from usuarios where Usuario='$usuario'";
+			$registros = $this->bd->consultar($sql);
+			while($reg=mysql_fetch_array($registros)){
+				$salida = $reg['Pregunta'];
+			}
+
+		}catch(Exception $e){
+			echo "Error en la funcion pregunta_Usuario()";
 		}
+
 		$this->logueo->set_Pregunta($salida);
 	}
 	

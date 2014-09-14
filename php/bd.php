@@ -19,7 +19,7 @@ class BD{
 		mysql_select_db($this->base,$this->conexion) or
 		  die("Problemas en la seleccion de la base de datos");
 		  
-		echo "Conexion exitosa a la BD";
+		//echo "Conexion exitosa a la BD";
 	}
 	
 	public function desconectar(){
@@ -33,8 +33,7 @@ class BD{
 	}
 	
 	public function consultar($sql){
-		$registros = mysql_query($sql,$this->conexion) 
-		 or die("<br>Problemas al consultar:".mysql_error());
+		$registros = mysql_query($sql,$this->conexion) ;
 		 
 		return $registros;
 	}

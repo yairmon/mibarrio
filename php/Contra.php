@@ -12,9 +12,10 @@
 	<?php
 		{
 			if (isset($_REQUEST['error']))
-				echo "El usuario no existe<br>";
+				echo "<br>El usuario no existe";
 		}
 	?>
+	<p>
 	<input type="submit" name="login" class="login login-submit" value="Solicitar">
 </form>
 			
