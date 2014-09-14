@@ -20,15 +20,14 @@
 		if ($contra=="") 
 			header("Location: Contra_Validar.php?error=1");
 		elseif($contra=="NOt"){
-			echo '<b>La respuesta es incorrecta</b>';
-			echo '<p><a href="../index.php">Regresar</a>';
+			echo '<h1>La respuesta es incorrecta</h1>';
 		}
 		else{
 			echo "<div class='login-help'>
 			<h1>Su contrase&ntilde;a es:</h1><br>
-			<p>$contra</div>";
-			echo '<p><a href="../index.php">Regresar</a>';
+			<p>$contra</div><br>";
 		}
+
 
 		/*
 
@@ -42,7 +41,9 @@
 		}*/
 
 	?>
-	
+	<div class="login-help">
+	<p><a href="../index.php"><b>Regresar</b></a>
+	</div>
 
 
 </div>
