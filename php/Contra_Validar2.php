@@ -20,7 +20,7 @@
 		if ($contra=="") 
 			header("Location: Contra_Validar.php?error=1");
 		elseif($contra=="NOt"){
-			echo '<b>La respuesta est&aacute; mal escrita</b>';
+			echo '<b>La respuesta es incorrecta</b>';
 			echo '<p><a href="../index.php">Regresar</a>';
 		}
 		else{
