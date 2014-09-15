@@ -39,19 +39,25 @@
 <?php
 	include '../php/Controlador_Logueo.php';
 	include '../php/Modelo_Logueo.php';
+	include '../php/Controlador_Perfil.php';
+	include '../php/Modelo_Perfil.php';
 
 	$usuario=$_REQUEST['id'];
 
 	echo "<h1>$usuario</h1><br>"; 
 
-	$controlador = new Controlador_Logueo();
-	$validar = new Modelo_Logueo($controlador);
+	$controlador1 = new Controlador_Logueo();
+	$validar1 = new Modelo_Logueo($controlador1);
 
-	$validar = new Modelo_Logueo();
-	$nombre_Perfil=$validar->identifica_Perfil($usuario);
+	$validar1 = new Modelo_Logueo();
+	$nombre_Perfil=$validar1->identifica_Perfil($usuario);
 
+	$perfil = new Controlador_Perfil();
+	$validar2 = new Modelo_Perfil($perfil);
 
+	$validar2->buscar_Perfil($nombre_Perfil);
 
+/*
 	$nombre;
 	$sistema;
 	$perfiles;
@@ -81,24 +87,24 @@
 
 	mysql_close($conexion);
 
-
-	if($sistema==true){
+*/
+	if($perfil->get_Permiso_Sistema()){
 		echo "<div class='login-help'>";
 		echo "<a href='php/Contra.php'>Sistema</a></div>";
 	}
-	if($perfiles==true){
+	if($perfil->get_Permiso_Perfiles()){
 		echo "<div class='login-help'>";
 		echo "<a href='#'>Perfiles</a></div>";
 	}
-	if($productos==true){
+	if($perfil->get_Permiso_Productos()){
 		echo "<div class='login-help'>";
 		echo "<a href='#'>Productos</a></div>";
 	}
-	if($inventario==true){
+	if($perfil->get_Permiso_Inventario()){
 		echo "<div class='login-help'>";
 		echo "<a href='#'>Inventario</a></div>";
 	}
-	if($facturacion==true){
+	if($perfil->get_Permiso_Facturacion()){
 		echo "<div class='login-help'>";
 		echo "<a href='#'>Facturacion</a></div>";
 	}

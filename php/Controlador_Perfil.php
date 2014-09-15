@@ -1,16 +1,16 @@
 <?php
 
 class Controlador_Perfil{
-	private $nombre; 			// String
-	private $permiso_Sistema;	// boolean
-	private $permiso_Perfiles;	// boolean
-	private $permiso_Productos	// boolean
-	private $permiso_Inventario;// boolean
-	private $permiso_Facturacion; // boolean
-	private $permiso_Reportes;	// boolean
+	private $nombre; 				// String
+	private $permiso_Sistema;		// boolean
+	private $permiso_Perfiles;		// boolean
+	private $permiso_Productos;		// boolean
+	private $permiso_Inventario;	// boolean
+	private $permiso_Facturacion; 	// boolean
+	private $permiso_Reportes;		// boolean
 	
 	public function crear_Perfil($nom, $p_Sistema, $p_Perfiles, $p_Productos,
-						$p_Inventario, $p_Facturacion, $p_Reportes){
+						$p_Inventario, $p_Facturacion, $p_Reportes=NULL){
 		$this->nombre = $nom;
 		$this->permiso_Sistema = $p_Sistema;
 		$this->permiso_Perfiles = $p_Perfiles;
