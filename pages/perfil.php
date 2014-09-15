@@ -57,37 +57,8 @@
 
 	$validar2->buscar_Perfil($nombre_Perfil);
 
-/*
-	$nombre;
-	$sistema;
-	$perfiles;
-	$productos;
-	$inventario;
-	$facturacion;
-		
 
-	$conexion=mysql_connect("localhost","root","") or
-	  die("Problemas en la conexion");
-	mysql_select_db("base1",$conexion) or
-	  die("Problemas en la selección de la base de datos");
 
-	$registros=mysql_query("select Nombre,Sistema,Perfiles,Productos,Inventario,Facturacion
-	                        from perfiles where Nombre='$nombre_Perfil'",$conexion) or
-	  die("Problemas en el select:".mysql_error());
-
-	if ($reg=mysql_fetch_array($registros))
-	{
-		$nombre = $reg['Nombre'];
-		$sistema= $reg['Sistema'];
-		$perfiles= $reg['Perfiles'];
-		$productos= $reg['Productos'];
-		$inventario= $reg['Inventario'];
-		$facturacion= $reg['Facturacion'];		
-	}
-
-	mysql_close($conexion);
-
-*/
 	if($perfil->get_Permiso_Sistema()){
 		echo "<div class='login-help'>";
 		echo "<a href='php/Contra.php'>Sistema</a></div>";
