@@ -45,6 +45,18 @@ class Modelo_Logueo{
 	// void
 	public function identifica_Perfil($usuario){
 	//Comentario
+	//obtiene tipo de perfil
+		$perfil="";
+		$sql = "select nomPerfil from usuarios where Usuario='$usuario'";
+		$registros = $this->bd->consultar($sql);
+		if($reg=mysql_fetch_array($registros)){
+			$perfil = $reg['nomPerfil'];
+				
+			
+		}
+		return $perfil;
+	
+
 	}
 	
 	// String: Devuelve la contraseña si, la pregunta y la respuesta estan bien

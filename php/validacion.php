@@ -24,7 +24,7 @@ elseif($pass == "")
 elseif(!$controlador->get_Acceso())
 	header("Location: ../index.php?error=1");
 
-echo "<h2>Bienvenido $usuario</h2>";
+header("Location: ../pages/perfil.php?id=$usuario");
 	
 
 
