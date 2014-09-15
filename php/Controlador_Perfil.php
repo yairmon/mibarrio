@@ -79,6 +79,7 @@ class Controlador_Perfil{
 		$this->permiso_Reportes = $p_Reportes;
 	}
 	
+	// Huehuehuehuehue
 }
 
 ?>
