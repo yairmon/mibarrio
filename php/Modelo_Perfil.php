@@ -1,9 +1,10 @@
 <?php
 
 class Modelo_Perfil{
+	private $bd;		// Tipo: BD
 	private $perfil; 	// Tipo: Control_Perfil
 	
-	public function crear_Perfil($perfi){
+	public function __construct($perfi){
 		$this->perfil = $perfi;
 		
 	}
@@ -18,6 +19,11 @@ class Modelo_Perfil{
 	
 	// Void
 	public function eliminar_Perfil($perfi){
+	}
+	
+	// Void: Busca en la BD el perfil
+	public function buscar_Perfil($perfi){
+
 	}
 	
 }
