@@ -11,9 +11,9 @@
 
 			<form action="php/validacion.php" method="post">
 			Usuario:
-			<input type="text" name="user" placeholder="Nombre de usuario" required="required">
+			<input type="text" name="user" placeholder="Nombre de usuario" maxlength="8" required="required">
 			Contrase&ntilde;a:
-			<input type="password" name="pass" placeholder="Contrase&ntilde;a" required="required">
+			<input type="password" name="pass" placeholder="Contrase&ntilde;a" maxlength="8" required="required">
 			<input type="submit" name="login" class="login login-submit" value="Ingresar">
 			<?php
 {
