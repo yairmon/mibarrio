@@ -1,5 +1,5 @@
 <?php
-include 'bd.php';
+include_once 'bd.php';
 class Modelo_Logueo{
 	private $bd;		// Tipo: BD
 	private $logueo;	// Tipo: Controlador_Logueo
@@ -29,7 +29,7 @@ class Modelo_Logueo{
 		$salida = "";
 		try{
 
-			$sql = "select Usuario,Pregunta from usuarios where numDocumento='$documento'";
+			$sql = "select Usuario,Pregunta from usuarios where Documento='$documento'";
 			$registros = $this->bd->consultar($sql);
 			while($reg=mysql_fetch_array($registros)){
 				$salida = $reg['Pregunta'];
@@ -47,10 +47,10 @@ class Modelo_Logueo{
 	//Comentario
 	//obtiene tipo de perfil
 		$perfil="";
-		$sql = "select nomPerfil from usuarios where Usuario='$usuario'";
+		$sql = "select perfiles_Nombre from usuarios where Usuario='$usuario'";
 		$registros = $this->bd->consultar($sql);
 		if($reg=mysql_fetch_array($registros)){
-			$perfil = $reg['nomPerfil'];
+			$perfil = $reg['perfiles_Nombre'];
 				
 			
 		}
@@ -62,8 +62,8 @@ class Modelo_Logueo{
 	// String: Devuelve la contraseña si, la pregunta y la respuesta estan bien
 	public function restaurar_Contra($documento, $pregunta, $respuesta){
 		$salida = "NOt";
-		$sql = "select Usuario,Pregunta,Respuesta, Password
-		 from usuarios where numDocumento = '$documento'";
+		$sql = "select Usuario,Pregunta,Respuesta,Password
+		 from usuarios where Documento = '$documento'";
 		$registros = $this->bd->consultar($sql);
 		if($reg = mysql_fetch_array($registros)){
 			$v_pregunta = $reg['Pregunta'];

@@ -144,14 +144,56 @@ echo"</div>";
 $recibe_pagina=$_REQUEST['gestion'];
 
 switch ($recibe_pagina){ 
- case "perfil":
- 	
-   //include ("Gestion_Perfil.php"); 
- 		echo "<a href='Crear_Perfil.php?gestion=crearPerfil'><div class='links2 links2-submit'>";
-		echo "<b>Crear perfil</b></div></a><br><br>";
+ case "crearPerfil":
+ 	//todo lo de crear perfil
 
-		echo "<a href='#'><div class='links2 links2-submit'>";
-		echo "<b>Visualizar perfil</b></div></a>";
+ 		echo "Nombre del perfil:<br/>";
+		echo "<input type='text' name='nomPerfilNew' value='' placeholder='Escriba el nombre del perfil'/><br><br><br>";
+		echo "<table>
+					<tr>
+					  <td><strong>Permiso</strong></td>
+					  <td><strong>S&iacute;</strong></td>
+					  <td><strong>No</strong></td>
+					</tr>
+					 
+					<tr>
+					  <td>Sistema</td>
+					  <td><input type='radio' name='sis' value='true' /></td>
+					  <td><input type='radio' name='sis' value='false' checked='checked' /></td>
+					</tr>
+					 
+					<tr>
+					  <td>Perfiles</td>
+					  <td><input type='radio' name='perf' value='true' /></td>
+					  <td><input type='radio' name='perf' value='false' checked='checked' /></td>
+					</tr>
+					 
+					<tr>
+					  <td>Productos</td>
+					  <td><input type='radio' name='prod' value='true' /></td>
+					  <td><input type='radio' name='prod' value='false' checked='checked' /></td>
+					</tr>
+
+					<tr>
+					  <td>Inventario</td>
+					  <td><input type='radio' name='inv' value='true' /></td>
+					  <td><input type='radio' name='inv' value='false' checked='checked' /></td>
+					</tr>
+
+					<tr>
+					  <td>Facturacion</td>
+					  <td><input type='radio' name='fac' value='true' /></td>
+					  <td><input type='radio' name='fac' value='false' checked='checked' /></td>
+					</tr>
+
+					<tr>
+					  <td>Reportes</td>
+					  <td><input type='radio' name='rep' value='true' /></td>
+					  <td><input type='radio' name='rep' value='false' checked='checked' /></td>
+					</tr>
+			</table>";
+
+
 
 break;
 case "boton2":
@@ -172,3 +214,7 @@ echo "<h1><b>Bienvenido, $nom_Usuario.</b></h1>";
 
 </body>
 </html>
+
+
+
+
