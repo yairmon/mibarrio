@@ -1,6 +1,5 @@
 <?php
 	session_start();
-	include_once '../php/bd.php';
 ?>
 
 <html>
@@ -21,147 +20,103 @@
 <div class="menu-bar">
 	<div class='image-perfil'>
 		<?php 
+		include_once '../php/Modelo_Usuario.php';
+		include_once '../php/Controlador_Usuario.php';
 
-		include_once '../php/bd.php';
-
-			$baseDs=new BD("base1", "root");
-
-			$url="";
-			$pass="";
-			$nom_Usuario;
-			$usuario=$_SESSION['nick'];
-
-			$baseDs->conectar();
-			$sql = "select Foto,Password,Nombres from usuarios where Usuario='$usuario'";
-			$registros = $baseDs->consultar($sql);
-
-			if ($reg=mysql_fetch_array($registros))
-				//obtiene la foto y la clave de el usuario
-				$url = $reg['Foto'];
-				$pass = $reg['Password'];
-				$nom_Usuario = $reg['Nombres'];
-				
-
-			$baseDs->desconectar();
+		$c_usuario = new Controlador_Usuario();
+		$m_usuario = new Modelo_Usuario($c_usuario);
+		$usuario=$_SESSION['nick'];	
+		$m_usuario->buscar_Usuario($usuario);
 
 			//aqui verifica si la clave dela sesion iniciada es la misma de la BD, en caso sontraio devuelve a login
 
-if($pass!=$_SESSION['clave'])
-		header("Location: ../index.php");
-	else{
+		if (!isset($_SESSION['clave']))
+				header("Location: ../index.php");
 
-			echo "<img src='$url' border='0' width='180' height='200'>"; 
+		elseif($c_usuario->get_Password()!=$_SESSION['clave'])
+				header("Location: ../index.php");
+		else{
+
+			echo "<img src='".$c_usuario->get_Foto()."' border='0' width='180' height='200'>"; 
+
+			echo"</div>";
+			//aqui termina la div de la imagen
+
+
+
+			echo "<h1>".$c_usuario->get_Usuario()."</h1><br>"; 
+			include_once '../php/Controlador_Perfil.php';
+			include_once '../php/Modelo_Perfil.php';
+
+			$c_perfil = new Controlador_Perfil();
+			$m_perfil = new Modelo_Perfil($c_perfil);
+
+			$m_perfil->buscar_Perfil($c_usuario->get_Perfil());
+			$m_perfil->desconectarBD();
+
+				
+
+
+			if($c_perfil->get_PermisoSistema()){
+				echo "<div class='login-help'>";
+				echo "<a href='perfil.php?gestion=sistema'>Sistema</a></div>";
+			}
+			if($c_perfil->get_PermisoPerfiles()){
+				echo "<div class='login-help'>";
+				echo "<a href='perfil.php?gestion=perfil'>Gesti&oacute;n Perfil</a></div>";
+			}
+			if($c_perfil->get_PermisoProductos()){
+				echo "<div class='login-help'>";
+				echo "<a href='#'>Productos</a></div>";
+			}
+			if($c_perfil->get_PermisoInventario()){
+				echo "<div class='login-help'>";
+				echo "<a href='#'>Inventario</a></div>";
+			}
+			if($c_perfil->get_PermisoFacturacion()){
+				echo "<div class='login-help'>";
+				echo "<a href='#'>Facturaci&oacute;n</a></div>";
+			}
+
+			if($c_perfil->get_PermisoReportes()){
+				echo "<div class='login-help'>";
+				echo "<a href='#'>Reportes</a></div>";
+			}
+
+			echo "<br><br><h2> Tipo de perfil: <br>".$c_perfil->get_Nombre()."</h2>";
+		}
+
 
 echo"</div>";
-//aqui termina la div de la imagen
 
-	include '../php/Controlador_Logueo.php';
-	include '../php/Modelo_Logueo.php';
+echo"<div class='contenido'>";
 
-
-	echo "<h1>$nom_Usuario</h1><br>"; 
-
-	$controlador = new Controlador_Logueo();
-	$validar = new Modelo_Logueo($controlador);
-
-	$validar = new Modelo_Logueo();
-	$nombre_Perfil=$validar->identifica_Perfil($usuario);
-
-
-
-	$nombre;
-	$sistema;
-	$perfiles;
-	$productos;
-	$inventario;
-	$facturacion;
-		
-	/*
-	$conexion=mysql_connect("localhost","root","") or
-	  die("Problemas en la conexion");
-	mysql_select_db("base1",$conexion) or
-	  die("Problemas en la selección de la base de datos");
-
-	$registros=mysql_query("select Nombre_Perfil,Sistema,Perfiles,Productos,Inventario,Facturacion, Reportes
-	                        from perfiles where Nombre_Perfil='$nombre_Perfil'",$conexion) or
-	  die("Problemas en el select:".mysql_error());
-	 */
-	$baseDs->conectar();
-	$sql1 = "select Nombre,Sistema,Perfiles,Productos,Inventario,Facturacion, Reportes
-	                        from perfiles where Nombre='$nombre_Perfil'";
-	$registros1 = $baseDs->consultar($sql1);
-
-	if ($reg=mysql_fetch_array($registros1))
-	{
-		$nombre = $reg['Nombre'];
-		$sistema= $reg['Sistema'];
-		$perfiles= $reg['Perfiles'];
-		$productos= $reg['Productos'];
-		$inventario= $reg['Inventario'];
-		$facturacion= $reg['Facturacion'];
-		$reportes= $reg['Reportes'];		
-	}
-
-	$baseDs->desconectar();
-
-
-	if($sistema==true){
-		echo "<div class='login-help'>";
-		echo "<a href='perfil.php?gestion=sistema'>Sistema</a></div>";
-	}
-	if($perfiles==true){
-		echo "<div class='login-help'>";
-		echo "<a href='perfil.php?gestion=perfil'>Gesti&oacute;n Perfil</a></div>";
-	}
-	if($productos==true){
-		echo "<div class='login-help'>";
-		echo "<a href='#'>Productos</a></div>";
-	}
-	if($inventario==true){
-		echo "<div class='login-help'>";
-		echo "<a href='#'>Inventario</a></div>";
-	}
-	if($facturacion==true){
-		echo "<div class='login-help'>";
-		echo "<a href='#'>Facturaci&oacute;n</a></div>";
-	}
-
-	if($reportes==true){
-		echo "<div class='login-help'>";
-		echo "<a href='#'>Reportes</a></div>";
-	}
-
-	echo "<br><br><h2> Tipo de perfil: <br>$nombre_Perfil</h2>";
-}
-
-?>
-
-</div>
-
-<div class="contenido">
-
-<?php
 $recibe_pagina=$_REQUEST['gestion'];
 
 switch ($recibe_pagina){ 
  case "perfil":
  	
    //include ("Gestion_Perfil.php"); 
+ 	if($c_perfil->get_PermisoPerfiles()){
  		echo "<a href='Crear_Perfil.php?gestion=crearPerfil'><div class='links2 links2-submit'>";
 		echo "<b>Crear perfil</b></div></a><br><br>";
 
 		echo "<a href='#'><div class='links2 links2-submit'>";
 		echo "<b>Visualizar perfil</b></div></a>";
+ 		
+ 	}else
+		echo "<h1><i>Esto no te pertenece.</i></h1>";
+ 	
 
-break;
-case "boton2":
-  include ("contenido2.php"); 
-break; 
-case "boton3":
-  include ("contenido3.php"); 
-break; 
-default:
-echo "<h1><b>Bienvenido, $nom_Usuario.</b></h1>";
+	break;
+	case "boton2":
+	  include ("contenido2.php"); 
+	break; 
+	case "boton3":
+	  include ("contenido3.php"); 
+	break; 
+	default:
+		echo "<h1><b>Bienvenido, ".$c_usuario->get_Nombres().".</b></h1>";
 }
 
 

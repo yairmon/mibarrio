@@ -1,4 +1,5 @@
 <?php
+include_once 'bd.php';
 
 class Modelo_Perfil{
 	private $bd;		// Tipo: BD
@@ -13,6 +14,28 @@ class Modelo_Perfil{
 	
 	// Void
 	public function crear_Perfil($perfil){
+		$salida = false;
+		$nombre = $perfil->get_Nombre();
+		$sistema= $perfil->get_PermisoSistema();
+		$perfiles= $perfil->get_PermisoPerfiles();
+		$productos= $perfil->get_permisoProductos();
+		$inventario= $perfil->get_permisoInventario();
+		$facturacion= $perfil->get_permisoFacturacion();
+		$reportes= $perfil->get_PermisoReportes();
+		
+		try{
+
+
+			$sql = "INSERT INTO perfiles (Nombre, Sistema, Perfiles, Productos, Inventario, Facturacion, Reportes) 
+			VALUES ('$nombre', '$sistema', '$perfiles', '$productos', '$inventario', '$facturacion', '$reportes')";
+			$this->bd->insertar($sql);
+			$salida = true;
+			//header("Location: ../pages/Crear_Perfil.php?gestion=exito");
+		}
+		catch(Exception $e){
+				echo"error";
+		}
+		return $salida;
 	}
 	
 	// Void
@@ -29,20 +52,18 @@ class Modelo_Perfil{
 	                        from perfiles where Nombre='$perfi'";
 		$registros = $this->bd->consultar($sql);
 		if($reg=mysql_fetch_array($registros)){
-			$nombre = $reg['Nombre'];
-			$sistema= $reg['Sistema'];
-			$perfiles= $reg['Perfiles'];
-			$productos= $reg['Productos'];
-			$inventario= $reg['Inventario'];
-			$facturacion= $reg['Facturacion'];
-			$this->perfil->set_Nombre($nombre);
-			$this->perfil->set_Permiso_Sistema($sistema);
-			$this->perfil->set_Permiso_Perfiles($perfiles);
-			$this->perfil->set_Permiso_Productos($productos);
-			$this->perfil->set_Permiso_Inventario($inventario);
-			$this->perfil->set_Permiso_Facturacion($facturacion);
+			$this->perfil->set_Nombre($reg['Nombre']);
+			$this->perfil->set_PermisoSistema($reg['Sistema']);
+			$this->perfil->set_PermisoPerfiles($reg['Perfiles']);
+			$this->perfil->set_PermisoProductos($reg['Productos']);
+			$this->perfil->set_PermisoInventario($reg['Inventario']);
+			$this->perfil->set_PermisoFacturacion($reg['Facturacion']);
 
 		}
+	}
+
+	public function desconectarBD(){
+		$this->bd->desconectar();
 	}
 	
 }

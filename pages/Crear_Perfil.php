@@ -1,6 +1,5 @@
 <?php
 	session_start();
-	include_once '../php/bd.php';
 ?>
 
 <html>
@@ -21,135 +20,107 @@
 <div class="menu-bar">
 	<div class='image-perfil'>
 		<?php 
+		include_once '../php/Modelo_Usuario.php';
+		include_once '../php/Controlador_Usuario.php';
 
-		include_once '../php/bd.php';
-
-			$baseDs=new BD("base1", "root");
-
-			$url="";
-			$pass="";
-			$nom_Usuario;
-			$usuario=$_SESSION['nick'];
-
-			$baseDs->conectar();
-			$sql = "select Foto,Password,Nombres from usuarios where Usuario='$usuario'";
-			$registros = $baseDs->consultar($sql);
-
-			if ($reg=mysql_fetch_array($registros))
-				//obtiene la foto y la clave de el usuario
-				$url = $reg['Foto'];
-				$pass = $reg['Password'];
-				$nom_Usuario = $reg['Nombres'];
-				
-
-			$baseDs->desconectar();
+		$c_usuario = new Controlador_Usuario();
+		$m_usuario = new Modelo_Usuario($c_usuario);
+		$usuario=$_SESSION['nick'];	
+		$m_usuario->buscar_Usuario($usuario);
 
 			//aqui verifica si la clave dela sesion iniciada es la misma de la BD, en caso sontraio devuelve a login
 
-if($pass!=$_SESSION['clave'])
-		header("Location: ../index.php");
-	else{
+		if (!isset($_SESSION['clave']))
+				header("Location: ../index.php");
 
-			echo "<img src='$url' border='0' width='180' height='200'>"; 
+		elseif($c_usuario->get_Password()!=$_SESSION['clave'])
+				header("Location: ../index.php");
+		else{
+
+			echo "<img src='".$c_usuario->get_Foto()."' border='0' width='180' height='200'>"; 
+
+			echo"</div>";
+			//aqui termina la div de la imagen
+
+
+
+			echo "<h1>".$c_usuario->get_Usuario()."</h1><br>"; 
+			include_once '../php/Controlador_Perfil.php';
+			include_once '../php/Modelo_Perfil.php';
+
+			$c_perfil = new Controlador_Perfil();
+			$m_perfil = new Modelo_Perfil($c_perfil);
+
+			$m_perfil->buscar_Perfil($c_usuario->get_Perfil());
+			$m_perfil->desconectarBD();
+
+				
+
+
+			if($c_perfil->get_PermisoSistema()){
+				echo "<div class='login-help'>";
+				echo "<a href='perfil.php?gestion=sistema'>Sistema</a></div>";
+			}
+			if($c_perfil->get_PermisoPerfiles()){
+				echo "<div class='login-help'>";
+				echo "<a href='perfil.php?gestion=perfil'>Gesti&oacute;n Perfil</a></div>";
+			}
+			if($c_perfil->get_PermisoProductos()){
+				echo "<div class='login-help'>";
+				echo "<a href='#'>Productos</a></div>";
+			}
+			if($c_perfil->get_PermisoInventario()){
+				echo "<div class='login-help'>";
+				echo "<a href='#'>Inventario</a></div>";
+			}
+			if($c_perfil->get_PermisoFacturacion()){
+				echo "<div class='login-help'>";
+				echo "<a href='#'>Facturaci&oacute;n</a></div>";
+			}
+
+			if($c_perfil->get_PermisoReportes()){
+				echo "<div class='login-help'>";
+				echo "<a href='#'>Reportes</a></div>";
+			}
+
+			echo "<br><br><h2> Tipo de perfil: <br>".$c_perfil->get_Nombre()."</h2>";
+		}
+
 
 echo"</div>";
-//aqui termina la div de la imagen
 
-	include '../php/Controlador_Logueo.php';
-	include '../php/Modelo_Logueo.php';
+echo"<div class='contenido'>";
 
-
-	echo "<h1>$nom_Usuario</h1><br>"; 
-
-	$controlador = new Controlador_Logueo();
-	$validar = new Modelo_Logueo($controlador);
-
-	$validar = new Modelo_Logueo();
-	$nombre_Perfil=$validar->identifica_Perfil($usuario);
-
-
-
-	$nombre;
-	$sistema;
-	$perfiles;
-	$productos;
-	$inventario;
-	$facturacion;
-		
-	/*
-	$conexion=mysql_connect("localhost","root","") or
-	  die("Problemas en la conexion");
-	mysql_select_db("base1",$conexion) or
-	  die("Problemas en la selección de la base de datos");
-
-	$registros=mysql_query("select Nombre_Perfil,Sistema,Perfiles,Productos,Inventario,Facturacion, Reportes
-	                        from perfiles where Nombre_Perfil='$nombre_Perfil'",$conexion) or
-	  die("Problemas en el select:".mysql_error());
-	 */
-	$baseDs->conectar();
-	$sql1 = "select Nombre,Sistema,Perfiles,Productos,Inventario,Facturacion, Reportes
-	                        from perfiles where Nombre='$nombre_Perfil'";
-	$registros1 = $baseDs->consultar($sql1);
-
-	if ($reg=mysql_fetch_array($registros1))
-	{
-		$nombre = $reg['Nombre'];
-		$sistema= $reg['Sistema'];
-		$perfiles= $reg['Perfiles'];
-		$productos= $reg['Productos'];
-		$inventario= $reg['Inventario'];
-		$facturacion= $reg['Facturacion'];
-		$reportes= $reg['Reportes'];		
-	}
-
-	$baseDs->desconectar();
-
-
-	if($sistema==true){
-		echo "<div class='login-help'>";
-		echo "<a href='perfil.php?gestion=sistema'>Sistema</a></div>";
-	}
-	if($perfiles==true){
-		echo "<div class='login-help'>";
-		echo "<a href='perfil.php?gestion=perfil'>Gesti&oacute;n Perfil</a></div>";
-	}
-	if($productos==true){
-		echo "<div class='login-help'>";
-		echo "<a href='#'>Productos</a></div>";
-	}
-	if($inventario==true){
-		echo "<div class='login-help'>";
-		echo "<a href='#'>Inventario</a></div>";
-	}
-	if($facturacion==true){
-		echo "<div class='login-help'>";
-		echo "<a href='#'>Facturaci&oacute;n</a></div>";
-	}
-
-	if($reportes==true){
-		echo "<div class='login-help'>";
-		echo "<a href='#'>Reportes</a></div>";
-	}
-
-	echo "<br><br><h2> Tipo de perfil: <br>$nombre_Perfil</h2>";
-}
-
-?>
-
-</div>
-
-<div class="contenido">
-
-<?php
 $recibe_pagina=$_REQUEST['gestion'];
 
 switch ($recibe_pagina){ 
  case "crearPerfil":
  	//todo lo de crear perfil
+ 	if($c_perfil->get_PermisoPerfiles()){
+ 		echo"<form action='../controladores-php/Controlador_Crear_Perfil.php' method='post'>";
 
- 		echo "Nombre del perfil:<br/>";
-		echo "<input type='text' name='nomPerfilNew' value='' placeholder='Escriba el nombre del perfil'/><br><br><br>";
-		echo "<table>
+
+		echo "<div class='CSSTableGenerator' >
+                <table >
+                	<tr>
+                        <td colspan='2'>
+                            Datos del nuevo perfil:
+                        </td>
+                     <tr> 
+
+                    <tr>
+                        <td>
+                            Nombre del perfil:
+                        </td>
+                        <td >
+                            <input type='text' name='nomb_Perfil' value='' placeholder='Escriba el nombre del perfil' required='required'/>
+                        </td>
+                     <tr>   
+                </table>
+            </div><br><br>";
+
+
+		echo "<div class='CSSTableGenerator'><table>
 					<tr>
 					  <td><strong>Permiso</strong></td>
 					  <td><strong>S&iacute;</strong></td>
@@ -158,52 +129,84 @@ switch ($recibe_pagina){
 					 
 					<tr>
 					  <td>Sistema</td>
-					  <td><input type='radio' name='sis' value='true' /></td>
-					  <td><input type='radio' name='sis' value='false' checked='checked' /></td>
+					  <td><input type='radio' name='sis' value='1' /></td>
+					  <td><input type='radio' name='sis' value='0' checked='checked' /></td>
 					</tr>
 					 
 					<tr>
 					  <td>Perfiles</td>
-					  <td><input type='radio' name='perf' value='true' /></td>
-					  <td><input type='radio' name='perf' value='false' checked='checked' /></td>
+					  <td><input type='radio' name='perf' value='1' /></td>
+					  <td><input type='radio' name='perf' value='0' checked='checked' /></td>
 					</tr>
 					 
 					<tr>
 					  <td>Productos</td>
-					  <td><input type='radio' name='prod' value='true' /></td>
-					  <td><input type='radio' name='prod' value='false' checked='checked' /></td>
+					  <td><input type='radio' name='prod' value='1' /></td>
+					  <td><input type='radio' name='prod' value='0' checked='checked' /></td>
 					</tr>
 
 					<tr>
 					  <td>Inventario</td>
-					  <td><input type='radio' name='inv' value='true' /></td>
-					  <td><input type='radio' name='inv' value='false' checked='checked' /></td>
+					  <td><input type='radio' name='inv' value='1' /></td>
+					  <td><input type='radio' name='inv' value='0' checked='checked' /></td>
 					</tr>
 
 					<tr>
 					  <td>Facturacion</td>
-					  <td><input type='radio' name='fac' value='true' /></td>
-					  <td><input type='radio' name='fac' value='false' checked='checked' /></td>
+					  <td><input type='radio' name='fac' value='1' /></td>
+					  <td><input type='radio' name='fac' value='0' checked='checked' /></td>
 					</tr>
 
 					<tr>
 					  <td>Reportes</td>
-					  <td><input type='radio' name='rep' value='true' /></td>
-					  <td><input type='radio' name='rep' value='false' checked='checked' /></td>
+					  <td><input type='radio' name='rep' value='1' /></td>
+					  <td><input type='radio' name='rep' value='0' checked='checked' /></td>
 					</tr>
-			</table>";
 
+					<tr>
+					  
+					  <td colspan='3'><br></td>
+					</tr>
 
+					<tr>
+					  <td  TD BGCOLOR='#FFFFFF'>
+
+					  <input type='submit' name='crear' class='login login-submit' value='Crear'>
+
+					  </td>
+
+					  <td colspan='2' TD BGCOLOR='#FFFFFF'>
+
+					  <input type='reset' name='borrar' class='login login-submit' value='Borrar'>
+
+					  </td>
+					</tr>
+
+			</table></div>";
+
+		echo"</fomr>";
+
+ 	}else
+		echo "<h1><i>Esto no te pertenece.</i></h1>";
 
 break;
-case "boton2":
-  include ("contenido2.php"); 
+case "exito":
+ 	if($c_perfil->get_PermisoPerfiles()){
+		echo "<h1><i>Se ha creado el perfil.</i></h1>";
+ 	}else
+		echo "<h1><i>Esto no te pertenece.</i></h1>";
+break; 
+case "error":
+ 	if($c_perfil->get_PermisoPerfiles()){
+		echo "<h1><i>No se ha creado el perfil.</i></h1>";
+ 	}else
+		echo "<h1><i>Esto no te pertenece.</i></h1>";
 break; 
 case "boton3":
   include ("contenido3.php"); 
 break; 
 default:
-echo "<h1><b>Bienvenido, $nom_Usuario.</b></h1>";
+echo "<h1><b>Bienvenido, ".$c_usuario->get_Nombres().".</b></h1>";
 }
 
 
@@ -214,7 +217,3 @@ echo "<h1><b>Bienvenido, $nom_Usuario.</b></h1>";
 
 </body>
 </html>
-
-
-
-

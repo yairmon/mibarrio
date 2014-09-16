@@ -1,12 +1,15 @@
 <?php
 
 class Controlador_Usuario{
-	private $nombre = "";
+	private $n_Identificacion = "";
+	private $usuario = "";
+	private $password = "";
+	private $nombres = "";
 	private $apellidos = "";
 	private $direccion = "";
 	private $email = "";
-	private $tipo_identificacion = "";
-	private $n_identificacion = "";
+	private $tipo_Identificacion = "";
+	private $ciudad = "";
 	private $pregunta = "";
 	private $respuesta = "";
 	private $celular = 0;
@@ -14,14 +17,17 @@ class Controlador_Usuario{
 	private $foto; // ImageIcon
 	private $perfil; //Perfil
 	
-	public function __construct($nom, $apell, $dire, $e_mail, $tipo_id, $n_id,
-						$pregun, $respues, $celu, $_edad, $fot, $perfi){
+	public function crear_Usuario($n_id, $usu, $pass, $nom, $apell, $dire, $e_mail, $tipo_id, 
+						$ciud, $pregun, $respues, $celu, $_edad, $fot, $perfi){
+		$this->n_identificacion = $n_id;
+		$this->password = $pass;
+		$this->usuario = $usu;
 		$this->nombre = $nom;
 		$this->apellidos = $apell;
 		$this->direccion = $dire;
 		$this->email = $e_mail;
 		$this->tipo_identificacion = $tipo_id;
-		$this->n_identificacion = $n_id;
+		$this->ciudad = $ciud;
 		$this->pregunta = $pregu;
 		$this->respuesta = $respues;
 		$this->celular = $celu;
@@ -31,8 +37,20 @@ class Controlador_Usuario{
 		
 	}
 	
-	public function get_Nombre(){
-		return $this->nombre;
+	public function get_Nid(){
+		return $this->n_Identificacion;
+	}
+	
+	public function get_Usuario(){
+		return $this->usuario;
+	}
+	
+	public function get_Password(){
+		return $this->password;
+	}
+	
+	public function get_Nombres(){
+		return $this->nombres;
 	}
 	
 	public function get_Apellidos(){
@@ -47,12 +65,8 @@ class Controlador_Usuario{
 		return $this->email;
 	}
 	
-	public function get_Tipo_Id(){
-		return $this->tipo_identificacion;
-	}
-	
-	public function get_Nid(){
-		return $this->n_identificacion;
+	public function get_TipoId(){
+		return $this->tipo_Identificacion;
 	}
 	
 	public function get_Pregunta(){
@@ -80,9 +94,21 @@ class Controlador_Usuario{
 	}
 	
 	
+	
+	public function set_Nid($n_id){
+		$this->n_Identificacion = $n_id;
+	}
 
-	public function set_Nombre($nom){
-		$this->nombre = $nom;
+	public function set_Usuario($usu){
+		$this->usuario = $usu;
+	}
+
+	public function set_Password($pass){
+		$this->password = $pass;
+	}
+
+	public function set_Nombres($nom){
+		$this->nombres = $nom;
 	}
 	
 	public function set_Apellidos($apell){
@@ -97,12 +123,12 @@ class Controlador_Usuario{
 		$this->email = $e_mail;
 	}
 	
-	public function set_Tipo_Id($tipo_id){
-		$this->tipo_identificacion = $tipo_id;
+	public function set_TipoId($tipo_id){
+		$this->tipo_Identificacion = $tipo_id;
 	}
 	
-	public function set_N_Id($n_id){
-		$this->n_identificacion = $n_id;
+	public function set_Ciudad($ciud){
+		$this->ciudad = $ciud;
 	}
 	
 	public function set_Pregunta($pregun){
