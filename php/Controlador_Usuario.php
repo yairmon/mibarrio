@@ -77,6 +77,10 @@ class Controlador_Usuario{
 		return $this->respuesta;
 	}
 	
+	public function get_Ciudad(){
+		return $this->ciudad;
+	}
+	
 	public function get_Celular(){
 		return $this->celular;
 	}

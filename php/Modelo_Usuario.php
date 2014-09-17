@@ -49,6 +49,28 @@ class Modelo_Usuario{
 	
 	public function cambiar_Contra($nombre, $apell, $pass){
 	}
+
+	public function desconectarBD(){
+		$this->bd->desconectar();
+	}
+
+	public function mostrar_Todos(){
+
+		$sql = "select * from usuarios";
+		$registros = $this->bd->consultar($sql);
+		$ar;
+
+	    for($i = 0; $row = mysql_fetch_row($registros); $i++){
+
+	        for($j = 0; $j < 16; $j++){
+	            
+	            $ar[$i][$j] = $row[$j];
+
+	        }
+	    }
+
+	    return $ar;
+	}
 	
 }
 

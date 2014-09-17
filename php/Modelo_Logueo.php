@@ -79,6 +79,10 @@ class Modelo_Logueo{
 		return $this->logueo;
 	}
 
+	public function desconectarBD(){
+		$this->bd->desconectar();
+	}
+
 	
 }
 ?>

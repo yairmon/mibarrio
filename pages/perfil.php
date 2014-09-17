@@ -56,14 +56,16 @@
 
 				
 
-
+			$enlace_sistema = "bajo";
 			if($c_perfil->get_PermisoSistema()){
-				echo "<div class='login-help'>";
-				echo "<a href='perfil.php?gestion=sistema'>Sistema</a></div>";
+				$enlace_sistema = "alto";
 			}
+			echo "<div class='login-help'>";
+			echo "<a href='Sistema.php?gestion=$enlace_sistema'>Sistema</a></div>";
+
 			if($c_perfil->get_PermisoPerfiles()){
 				echo "<div class='login-help'>";
-				echo "<a href='perfil.php?gestion=perfil'>Gesti&oacute;n Perfil</a></div>";
+				echo "<a href='Gestor_Perfil.php?gestion=perfil'>Gesti&oacute;n Perfil</a></div>";
 			}
 			if($c_perfil->get_PermisoProductos()){
 				echo "<div class='login-help'>";
@@ -83,45 +85,16 @@
 				echo "<a href='#'>Reportes</a></div>";
 			}
 
+
 			echo "<br><br><h2> Tipo de perfil: <br>".$c_perfil->get_Nombre()."</h2>";
 		}
 
 
 echo"</div>";
-
-echo"<div class='contenido'>";
-
-$recibe_pagina=$_REQUEST['gestion'];
-
-switch ($recibe_pagina){ 
- case "perfil":
- 	
-   //include ("Gestion_Perfil.php"); 
- 	if($c_perfil->get_PermisoPerfiles()){
- 		echo "<a href='Crear_Perfil.php?gestion=crearPerfil'><div class='links2 links2-submit'>";
-		echo "<b>Crear perfil</b></div></a><br><br>";
-
-		echo "<a href='#'><div class='links2 links2-submit'>";
-		echo "<b>Visualizar perfil</b></div></a>";
- 		
- 	}else
-		echo "<h1><i>Esto no te pertenece.</i></h1>";
- 	
-
-	break;
-	case "boton2":
-	  include ("contenido2.php"); 
-	break; 
-	case "boton3":
-	  include ("contenido3.php"); 
-	break; 
-	default:
-		echo "<h1><b>Bienvenido, ".$c_usuario->get_Nombres().".</b></h1>";
-}
-
+/*
+*/
 
 ?>
-</div>
 
 
 

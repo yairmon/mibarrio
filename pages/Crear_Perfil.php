@@ -1,4 +1,7 @@
 <?php
+
+	include ("perfil.php"); 
+/*
 	session_start();
 ?>
 
@@ -88,7 +91,7 @@
 
 
 echo"</div>";
-
+*/
 echo"<div class='contenido'>";
 
 $recibe_pagina=$_REQUEST['gestion'];
@@ -171,13 +174,13 @@ switch ($recibe_pagina){
 					<tr>
 					  <td  TD BGCOLOR='#FFFFFF'>
 
-					  <input type='submit' name='crear' class='login login-submit' value='Crear'>
+					  <input type='submit' name='crear' class='login login-submit' value='Crear Perfil'>
 
 					  </td>
 
 					  <td colspan='2' TD BGCOLOR='#FFFFFF'>
 
-					  <input type='reset' name='borrar' class='login login-submit' value='Borrar'>
+					  <input type='reset' name='borrar' class='login login-submit' value='Borrar Campos'>
 
 					  </td>
 					</tr>

@@ -2,13 +2,6 @@
 	session_start();
 	$_SESSION['nick']=$_REQUEST['user'];
 	$_SESSION['clave']=$_REQUEST['pass'];
-?>
-<html>
-<head>
-<title>Problema</title>
-</head>
-<body>
-<?php
 
 
 
@@ -31,8 +24,6 @@
 	elseif(!$c_Logueo->get_Acceso())
 		header("Location: ../index.php?error=1");
 	else
-		header("Location: ../pages/perfil.php?gestion=inicio");
+		header("Location: ../pages/Welcome.php?gestion=inicio");
 	
 ?>
-</body>
-</html>
