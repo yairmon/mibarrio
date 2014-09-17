@@ -46,7 +46,9 @@
 				<tr>
 					<td><font size=1>
 						<a href='Modificar_Usuario.php?gestion=".$usuarios[$i][0]."'>
-						Editar</a></font></td>
+						Editar</a>
+						<a href='Eliminar_Usuario.php?gestion=".$usuarios[$i][0]."'>
+						Eliminar</a></font></td>
 					<td><font size=$tam>".$usuarios[$i][0]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][1]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][2]."</font></td>
