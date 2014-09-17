@@ -14,7 +14,7 @@
 	 		echo "<a href='Crear_Perfil.php?gestion=crearPerfil'><div class='links2 links2-submit'>";
 			echo "<b>Crear perfil</b></div></a><br><br>";
 
-			echo "<a href='#'><div class='links2 links2-submit'>";
+			echo "<a href='Crear_Perfil.php?gestion=visualizar'><div class='links2 links2-submit'>";
 			echo "<b>Visualizar perfil</b></div></a>";
 	 		
 	 	}else

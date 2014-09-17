@@ -28,7 +28,7 @@
 		$usuario=$_SESSION['nick'];	
 		$m_usuario->buscar_Usuario($usuario);
 
-			//aqui verifica si la clave dela sesion iniciada es la misma de la BD, en caso sontraio devuelve a login
+		//aqui verifica si la clave dela sesion iniciada es la misma de la BD, en caso sontraio devuelve a login
 
 		if (!isset($_SESSION['clave']))
 				header("Location: ../index.php");

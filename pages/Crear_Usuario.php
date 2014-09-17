@@ -1,0 +1,4 @@
+<?php
+
+	include ("perfil.php"); 
+?>

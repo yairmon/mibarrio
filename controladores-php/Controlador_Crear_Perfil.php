@@ -10,14 +10,6 @@
 	$facturacion= $_REQUEST['fac'];
 	$reportes= $_REQUEST['rep'];
 
-	echo"nombre: $nombre<br>
-		sistema: $sistema<br>
-		perfiles: $perfiles<br>
-		productos: $productos<br>
-		inventario: $inventario<br>
-		facturacion: $facturacion<br>
-		reportes: $reportes<br>
-	";
 	$c_perfil = new Controlador_Perfil();
 	$c_perfil->crear_Perfil($nombre, $sistema, 
 		$perfiles, $productos, $inventario, $facturacion, $reportes);

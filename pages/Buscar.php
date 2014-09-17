@@ -4,6 +4,16 @@
 
 	echo"<div class='contenido'>";
 
+	///////////////////////////////////////////////////////////////////////////
+	// Funcion que retorna true si el haystack empieza por el needle
+	function startsWith($haystack, $needle)
+	{
+	    return $needle === "" || strpos($haystack, $needle) === 0;
+	}
+	///////////////////////////////////////////////////////////////////////////
+	
+	$buscar = strtolower($_REQUEST['nombre']);
+	echo '<p>Buscando el nombre: '.$buscar.'<p>';
 
 	$recibe_pagina=$_REQUEST['page'];
 	$recibe = $recibe_pagina - 1;
@@ -12,7 +22,7 @@
 		<tr>
 			<td><font size=1></font></td>
 			<td><font size=$tam>Documento</font></td>
-			<td><font size=$tam>Nombres</font></td>
+			<td><font size=$tam><b>Nombres</b></font></td>
 			<td><font size=$tam>Apellidos</font></td>
 			<td><font size=$tam>Usuario</font></td>
 			<td><font size=$tam>Password</font></td>
@@ -37,11 +47,31 @@
  			<input type='submit' name='buscar' class='login login-submit' value='Buscar'>
  			";
  		echo "</form>";
- 		$usuarios = $m_usuario->mostrar_Todos();
- 		$tam_usuarios = count($usuarios);
- 		$recibe *= 10;
- 		$fin = $recibe + 10;
- 		for($i = $recibe; $i < $fin && $i < $tam_usuarios; $i++){
+ 		$usuarios_arr = $m_usuario->mostrar_Todos();
+ 		$usuarios;
+ 		$tam_usuarios = count($usuarios_arr);
+
+ 		// For para descartar los usuarios que no empiezan con el 
+ 		// nombre que el usuario escribió en el campo de buscar
+ 		$posicion_buscar_usuario = 0;
+ 		$posicion_buscar_usuario2 = false;
+ 		for($i = 0; $i < $tam_usuarios; $i++){
+
+			$t_nombre = strtolower($usuarios_arr[$i][1]);  //strtolower es para pasar todo a minusculas
+			if(startsWith($t_nombre,$buscar)){
+				$posicion_buscar_usuario2 = true;
+		        for($j = 0; $j < 16; $j++)    
+		            $usuarios[$posicion_buscar_usuario][$j] = $usuarios_arr[$i][$j];
+
+		        
+				$posicion_buscar_usuario++;
+ 			}
+ 		}
+ 		if($posicion_buscar_usuario2)
+ 			$tam_usuarios = count($usuarios);
+ 		else $tam_usuarios = 0;
+
+ 		for($i = 0; $i < $tam_usuarios; $i++){
 			echo "
 				<tr>
 					<td><font size=1>
@@ -69,50 +99,11 @@
 				</tr>";
  			
  		}
- 		if($fin < $tam_usuarios){
- 			$recibe_pagina++;
- 			echo '
- 				<tr>
- 					<td colspan=16><font size=$tam>
- 					<a href = "Ver_Usuario.php?page='.$recibe_pagina.'">
- 						Siguiente
-					</font></a></td>
- 				<tr>
- 			';
- 		}
 
 		echo "</table>";
  		
  	
  		
- 	}else{
- 		// Parte para el perfil sin permisos de ver a otros usuarios
-		echo "
-			<tr>
-				<td><font size=1>
-					<a href='Modificar_Usuario.php?gestion=".$c_usuario->get_Nid()."'>
-					Editar</a></font></td>
-				<td><font size=$tam>".$c_usuario->get_Nid()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_Nombres()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_Apellidos()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_Usuario()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_Password()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_Pregunta()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_Respuesta()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_TipoId()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_Ciudad()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_Direccion()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_Edad()."</font></td>
-					<td><font size=$tam><a href='".$c_usuario->get_Foto()."' target=blank>
-							URL</a></font></td>
-				<td><font size=$tam>".$c_usuario->get_Celular()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_Email()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_Genero()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_Perfil()."</font></td>
-			</tr>
-			</table>
-		";
- 	
  	}
 
 	echo "</table></div>";	

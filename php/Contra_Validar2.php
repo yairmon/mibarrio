@@ -29,17 +29,6 @@
 		}
 
 
-		/*
-
-		echo "<br>Usuario: $usuario";
-
-		$pregunta = $controlador->get_Pregunta();	
-			echo "<br>La pregunta es: ";
-			echo '<input type="text" name="pregu" placeholder="'.$pregunta.'" disabled>';
-			echo "<br>Respuesta:";
-			echo '<input type="text" name="respues" placeholder="respuesta">';
-		}*/
-
 	?>
 	<div class="login-help">
 	<p><a href="../index.php"><b>Regresar</b></a>

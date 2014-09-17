@@ -14,22 +14,22 @@ class Controlador_Usuario{
 	private $respuesta = "";
 	private $celular = 0;
 	private $edad = 0;
-	private $foto; // ImageIcon
+	private $foto; // String
 	private $genero = 0;
-	private $perfil; //Perfil
+	private $perfil; //String
 	
 	public function crear_Usuario($n_id, $usu, $pass, $nom, $apell, $dire, $e_mail, $tipo_id, 
 						$ciud, $pregun, $respues, $celu, $_edad, $fot, $gene, $perfi){
-		$this->n_identificacion = $n_id;
+		$this->n_Identificacion = $n_id;
 		$this->password = $pass;
 		$this->usuario = $usu;
-		$this->nombre = $nom;
+		$this->nombres = $nom;
 		$this->apellidos = $apell;
 		$this->direccion = $dire;
 		$this->email = $e_mail;
-		$this->tipo_identificacion = $tipo_id;
+		$this->tipo_Identificacion = $tipo_id;
 		$this->ciudad = $ciud;
-		$this->pregunta = $pregu;
+		$this->pregunta = $pregun;
 		$this->respuesta = $respues;
 		$this->celular = $celu;
 		$this->edad = $_edad;
@@ -43,14 +43,6 @@ class Controlador_Usuario{
 		return $this->n_Identificacion;
 	}
 	
-	public function get_Usuario(){
-		return $this->usuario;
-	}
-	
-	public function get_Password(){
-		return $this->password;
-	}
-	
 	public function get_Nombres(){
 		return $this->nombres;
 	}
@@ -59,16 +51,12 @@ class Controlador_Usuario{
 		return $this->apellidos;
 	}
 	
-	public function get_Direccion(){
-		return $this->direccion;
+	public function get_Usuario(){
+		return $this->usuario;
 	}
 	
-	public function get_Email(){
-		return $this->email;
-	}
-	
-	public function get_TipoId(){
-		return $this->tipo_Identificacion;
+	public function get_Password(){
+		return $this->password;
 	}
 	
 	public function get_Pregunta(){
@@ -79,12 +67,16 @@ class Controlador_Usuario{
 		return $this->respuesta;
 	}
 	
+	public function get_TipoId(){
+		return $this->tipo_Identificacion;
+	}
+	
 	public function get_Ciudad(){
 		return $this->ciudad;
 	}
 	
-	public function get_Celular(){
-		return $this->celular;
+	public function get_Direccion(){
+		return $this->direccion;
 	}
 	
 	public function get_Edad(){
@@ -93,6 +85,14 @@ class Controlador_Usuario{
 	
 	public function get_Foto(){
 		return $this->foto;
+	}
+	
+	public function get_Celular(){
+		return $this->celular;
+	}
+	
+	public function get_Email(){
+		return $this->email;
 	}
 	
 	public function get_Genero(){

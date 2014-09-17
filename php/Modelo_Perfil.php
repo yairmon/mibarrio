@@ -33,7 +33,7 @@ class Modelo_Perfil{
 			//header("Location: ../pages/Crear_Perfil.php?gestion=exito");
 		}
 		catch(Exception $e){
-				echo"error";
+				echo "error";
 		}
 		return $salida;
 	}
@@ -66,6 +66,24 @@ class Modelo_Perfil{
 		$this->bd->desconectar();
 	}
 	
+
+	public function mostrar_Todos(){
+
+		$sql = "select * from perfiles";
+		$registros = $this->bd->consultar($sql);
+		$ar;
+
+	    for($i = 0; $row = mysql_fetch_row($registros); $i++){
+
+	        for($j = 0; $j < 7; $j++){
+	            
+	            $ar[$i][$j] = $row[$j];
+
+	        }
+	    }
+
+	    return $ar;
+	}
 }
 
 ?>

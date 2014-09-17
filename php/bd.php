@@ -28,8 +28,9 @@ class BD{
 	
 	public function insertar($sql){
 		mysql_query($sql,$this->conexion) 
-		 or die("Problemas en el insertar".mysql_error());
+		 or die("Problemas en el insertar");
 		mysql_close($this->conexion);
+		return true;
 	}
 	
 	public function consultar($sql){
