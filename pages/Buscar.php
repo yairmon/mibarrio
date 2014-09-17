@@ -18,7 +18,7 @@
 	$recibe_pagina=$_REQUEST['page'];
 	$recibe = $recibe_pagina - 1;
 	$tam = 2;
-	echo "<table border=1>
+	echo "<div style='overflow:scroll'><table border=1 class='CSSTableGenerator'>
 		<tr>
 			<td><font size=1></font></td>
 			<td><font size=$tam>Documento</font></td>
