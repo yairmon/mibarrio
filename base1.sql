@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 17, 2014 at 10:15 PM
+-- Generation Time: Sep 17, 2014 at 10:34 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -42,11 +42,7 @@ CREATE TABLE IF NOT EXISTS `perfiles` (
 --
 
 INSERT INTO `perfiles` (`Nombre`, `Sistema`, `Perfiles`, `Productos`, `Inventario`, `Facturacion`, `Reportes`) VALUES
-('aaa', 1, 0, 0, 0, 0, 0),
 ('Cosito', 0, 0, 0, 0, 1, 1),
-('perfil1', 0, 0, 0, 0, 0, 0),
-('Perfil2', 0, 1, 0, 1, 0, 0),
-('Perfil3', 0, 0, 0, 0, 1, 0),
 ('root', 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
@@ -82,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 INSERT INTO `usuarios` (`Documento`, `Nombres`, `Apellidos`, `Usuario`, `Password`, `Pregunta`, `Respuesta`, `Tipo_Documento`, `Ciudad`, `Direccion`, `Edad`, `Foto`, `Telefono`, `Correo_Electronico`, `Genero`, `perfiles_Nombre`) VALUES
 (1111111113, 'Rootencio', 'Adminez', 'roott', '123456', 'asdfasdfa?', 'batman', 'CC', 'Tulua', 'Calle 11 #1-1 - Barrio', 20, 'http://1.bp.blogspot.com/-VuCZ5URwvL4/UOwmLOZMGqI/AAAAAAAAAHE/0tuJa1FKU9A/s1600/tumblr_m0sykzhXsU1r4', 2147483647, 'asdf@root.com', 'M', 'root'),
-(1116264489, 'Andres', 'Vasquez', 'andress', '1234', 'Primer amigo de la infancia?', 'jhon', 'CC', 'Tulua', 'Calle 44 #44-44 - Barrio', 20, 'https://sp.yimg.com/ib/th?id=HN.608055352352440543&pid=15.1&P=0', 2147483647, 'andresvasquez12345@gmail.com', 'M', 'aaa'),
+(1116264489, 'Andres', 'Vasquez', 'andress', '1234', 'Primer amigo de la infancia?', 'jhon', 'CC', 'Tulua', 'Calle 44 #44-44 - Barrio', 20, 'https://sp.yimg.com/ib/th?id=HN.608055352352440543&pid=15.1&P=0', 2147483647, 'andresvasquez12345@gmail.com', 'M', 'Cosito'),
 (1116266234, 'Jhon', 'Valencia', 'jhon', 'j12', 'Segundo nombre?', 'edinson', 'CC', 'Tulua', 'Calle 33 #333-33 - Barrio', 20, '', 2147483647, 'jevalenciac@gmail.com', 'M', 'Cosito'),
 (1116268101, 'Yair', 'Mondragon ', 'yair', 'mondra', 'Primera Mascota?', 'perrito', 'CC', 'Tulua', 'Calle 22 #22-2 - Barrio', 20, 'https://scontent-b-dfw.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/12058_288531341277248_255174317_n.jpg?oh=4ce2e3746e3e1592bbdf726faa9a5549&oe=54849F93', 2307004, 'blackandwhite654@gmail.com', 'M', 'Cosito'),
 (1116488415, 'Stiven', 'Flores', 'stiven', '1234', 'Comida favorita?', 'rapida', 'CC', 'Tulua', 'Carrera 44 #44-44 - Barrio', 20, '', 2147483647, 'stiven123@gmail.com', 'M', 'Cosito');
