@@ -91,19 +91,21 @@
 					<a href='Modificar_Usuario.php?gestion=".$c_usuario->get_Nid()."'>
 					Editar</a></font></td>
 				<td><font size=$tam>".$c_usuario->get_Nid()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_Usuario()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_Password()."</font></td>
 				<td><font size=$tam>".$c_usuario->get_Nombres()."</font></td>
 				<td><font size=$tam>".$c_usuario->get_Apellidos()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_Direccion()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_Email()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_TipoId()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_Ciudad()."</font></td>
+				<td><font size=$tam>".$c_usuario->get_Usuario()."</font></td>
+				<td><font size=$tam>".$c_usuario->get_Password()."</font></td>
 				<td><font size=$tam>".$c_usuario->get_Pregunta()."</font></td>
 				<td><font size=$tam>".$c_usuario->get_Respuesta()."</font></td>
-				<td><font size=$tam>".$c_usuario->get_Celular()."</font></td>
+				<td><font size=$tam>".$c_usuario->get_TipoId()."</font></td>
+				<td><font size=$tam>".$c_usuario->get_Ciudad()."</font></td>
+				<td><font size=$tam>".$c_usuario->get_Direccion()."</font></td>
 				<td><font size=$tam>".$c_usuario->get_Edad()."</font></td>
-				<td><font size=$tam>URL</font></td>
+					<td><font size=$tam><a href='".$c_usuario->get_Foto()."' target=blank>
+							URL</a></font></td>
+				<td><font size=$tam>".$c_usuario->get_Celular()."</font></td>
+				<td><font size=$tam>".$c_usuario->get_Email()."</font></td>
+				<td><font size=$tam>".$c_usuario->get_Genero()."</font></td>
 				<td><font size=$tam>".$c_usuario->get_Perfil()."</font></td>
 			</tr>
 			</table>

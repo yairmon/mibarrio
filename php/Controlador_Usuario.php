@@ -15,10 +15,11 @@ class Controlador_Usuario{
 	private $celular = 0;
 	private $edad = 0;
 	private $foto; // ImageIcon
+	private $genero = 0;
 	private $perfil; //Perfil
 	
 	public function crear_Usuario($n_id, $usu, $pass, $nom, $apell, $dire, $e_mail, $tipo_id, 
-						$ciud, $pregun, $respues, $celu, $_edad, $fot, $perfi){
+						$ciud, $pregun, $respues, $celu, $_edad, $fot, $gene, $perfi){
 		$this->n_identificacion = $n_id;
 		$this->password = $pass;
 		$this->usuario = $usu;
@@ -33,6 +34,7 @@ class Controlador_Usuario{
 		$this->celular = $celu;
 		$this->edad = $_edad;
 		$this->foto = $fot;
+		$this->genero = $gene;
 		$this->perfil = $perfi;
 		
 	}
@@ -91,6 +93,10 @@ class Controlador_Usuario{
 	
 	public function get_Foto(){
 		return $this->foto;
+	}
+	
+	public function get_Genero(){
+		return $this->genero;
 	}
 	
 	public function get_Perfil(){
@@ -153,6 +159,10 @@ class Controlador_Usuario{
 	
 	public function set_Foto($fot){
 		$this->foto = $fot;
+	}
+	
+	public function set_Genero($gene){
+		$this->genero = $gene; 
 	}
 	
 	public function set_Perfil($perfi){

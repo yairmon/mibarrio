@@ -33,6 +33,7 @@ class Modelo_Usuario{
 			$this->usuario->set_Celular($reg['Telefono']);
 			$this->usuario->set_Edad($reg['Edad']);
 			$this->usuario->set_Foto($reg['Foto']);
+			$this->usuario->set_Genero($reg['Genero']);
 			$this->usuario->set_Perfil($reg['perfiles_Nombre']);
 
 		}
