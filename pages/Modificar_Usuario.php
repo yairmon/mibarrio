@@ -15,7 +15,7 @@ switch ($numero_error){
  	$_perfi = $c_usuario->get_Perfil();
  	/*if($c_perfil->get_PermisoSistema()){
  		echo"<form action='../controladores-php/Controlador_Modificar_Usuario.php?perfi=0' method='post'>";
- 	}else*/ echo"<form action='../controladores-php/Controlador_Modificar_Usuario.php?doc=".$c_usuario->get_Nid()."' method='post'>";
+ 	}else*/ echo"<form action='../controladores-php/Controlador_Modificar_Usuario.php?doc=".$c_usuario->get_Nid()."&perfi=".$_perfi."' method='post'>";
 
 		echo "<div class='CSSTableGenerator' >
                 <table >
@@ -100,10 +100,10 @@ switch ($numero_error){
                     </tr>
                     <tr>
                         <td>
-                            Direccion:
+                            Direcci&oacute;n:
                         </td>
                         <td>
-                        	<input type='text' name='dire' value='".$c_usuario->get_Direccion()."' placeholder='Direccion' required='required' maxlength=30/>
+                        	<input type='text' name='dire' value='".$c_usuario->get_Direccion()."' placeholder='Direcci&oacute;' required='required' maxlength=30/>
                         </td>  
                     </tr>
                     <tr>
@@ -124,26 +124,26 @@ switch ($numero_error){
                     </tr>
                     <tr>
                         <td>
-                            Telefono:
+                            Tel&eacute;fono:
                         </td>
                         <td>
-                        	<input type='text' name='celu' value='".$c_usuario->get_Celular()."' placeholder='Telefono' required='required' maxlength=10/>
+                        	<input type='text' name='celu' value='".$c_usuario->get_Celular()."' placeholder='Tel&eacute;fono' required='required' maxlength=10/>
                         </td>  
                     </tr>
                     <tr>
                         <td>
-                            Correo Electronico:
+                            Correo Electr&oacute;nico:
                         </td>
                         <td>
-                        	<input type='text' name='e_mail' value='".$c_usuario->get_Email()."' placeholder='Correo Electronico' required='required' maxlength=30/>
+                        	<input type='text' name='e_mail' value='".$c_usuario->get_Email()."' placeholder='Correo Electr&oacute;nico' required='required' maxlength=30/>
                         </td>  
                     </tr>
                     <tr>
                         <td>
-                            Genero:
+                            G&eacute;nero:
                         </td>
                         <td>
-                        	<input type='text' name='gene' value='".$c_usuario->get_Genero()."' placeholder='Genero' required='required' maxlength=1/>
+                        	<input type='text' name='gene' value='".$c_usuario->get_Genero()."' placeholder='G&eacute;nero' required='required' maxlength=1/>
                         </td>  
                     </tr>
                     <tr>
@@ -192,8 +192,68 @@ case 1:
 	echo "<h1><i>Se ha modificado el usuario.</i></h1>";
 break; 
 case 2:
-	echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
-    echo "<p>Error: Tama&ntilde;o Documento minimo: 8</div><br>";
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Tama&ntilde;o 'Documento' m&iacute;nimo: 8</div><br>";
+break;
+case 3:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Tama&ntilde;o 'Nombres' m&iacute;nimo: 2 letras</div><br>";
+break;
+case 4:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Tama&ntilde;o 'Apellidos' m&iacute;nimo: 2 letras</div><br>";
+break;
+case 5:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Tama&ntilde;o 'Usuario' m&iacute;nimo: 5 caracteres</div><br>";
+break;
+case 6:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Tama&ntilde;o 'Password' m&iacute;nimo: 5 caracteres</div><br>";
+break;
+case 7:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Tama&ntilde;o 'Pregunta' m&iacute;nimo: 10 caracteres</div><br>";
+break;
+case 8:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Tama&ntilde;o 'Respuesta' m&iacute;nimo: 2 caracteres</div><br>";
+break;
+case 9:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Tama&ntilde;o 'Tipo Documento' m&iacute;nimo: 2 caracteres</div><br>";
+break;
+case 10:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Tama&ntilde;o 'Ciudad' m&iacute;nimo: 2 caracteres</div><br>";
+break;
+case 11:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Tama&ntilde;o 'Direcci&oacute;' m&iacute;nimo: 3 caracteres</div><br>";
+break;
+case 12:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Tama&ntilde;o 'Edad' m&iacute;nimo: 1 caracter</div><br>";
+break;
+case 13:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Tama&ntilde;o 'Foto' m&iacute;nimo: 3 caracteres</div><br>";
+break;
+case 14:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Tama&ntilde;o 'Tel&eacute;fono' m&iacute;nimo: 8 caracteres</div><br>";
+break;
+case 15:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Tama&ntilde;o 'Correo Electr&oacute;nico' m&iacute;nimo: 6 caracteres</div><br>";
+break;
+case 16:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Tama&ntilde;o 'G&eacute;nero' m&iacute;nimo: 1 caracter</div><br>";
+break;
+case 17:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Tama&ntilde;o 'Perfil' m&iacute;nimo: 1 caracter</div><br>";
 break;
 }
 

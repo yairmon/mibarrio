@@ -30,12 +30,12 @@
 			<td><font size=$tam>Respuesta</font></td>
 			<td><font size=$tam>Tipo Id</font></td>
 			<td><font size=$tam>Ciudad</font></td>
-			<td><font size=$tam>Direccion</font></td>
+			<td><font size=$tam>Direcci&oacute;n</font></td>
 			<td><font size=$tam>Edad</font></td>
 			<td><font size=$tam>Foto</font></td>
-			<td><font size=$tam>Celular</font></td>
+			<td><font size=$tam>Tel&eacute;fono</font></td>
 			<td><font size=$tam>Email</font></td>
-			<td><font size=$tam>Genero</font></td>
+			<td><font size=$tam>G&eacute;nero</font></td>
 			<td><font size=$tam>Perfil</font></td>
 		</tr>
 			</font> 

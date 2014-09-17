@@ -16,7 +16,7 @@ class Controlador_Perfil{
 		$this->permiso_Perfiles = $p_Perfiles;
 		$this->permiso_Productos = $p_Productos;
 		$this->permiso_Inventario = $p_Inventario;
-		$this->permiso_Facturacion = $p_Inventario;
+		$this->permiso_Facturacion = $p_Facturacion;
 		$this->permiso_Reportes = $p_Reportes;
 		
 	}

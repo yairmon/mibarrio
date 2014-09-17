@@ -65,7 +65,7 @@ switch ($recibe_pagina){
 					</tr>
 
 					<tr>
-					  <td>Facturacion</td>
+					  <td>Facturaci&oacute;n</td>
 					  <td><input type='radio' name='fac' value='1' /></td>
 					  <td><input type='radio' name='fac' value='0' checked='checked' /></td>
 					</tr>
@@ -220,7 +220,7 @@ case "visualizar-seleccion":
 					</tr>
 
 					<tr>
-					  <td>Facturacion</td>";
+					  <td>Facturaci&oacute;n</td>";
 					  if($consulta_perfil->get_PermisoFacturacion()){
 							echo "<td><strong>Si</strong></td>";	
 						}
