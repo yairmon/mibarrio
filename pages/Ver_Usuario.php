@@ -66,8 +66,8 @@
 					<td><font size=$tam>".$usuarios[$i][8]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][9]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][10]."</font></td>
-					<td><font size=$tam><a href='".$usuarios[$i][11]."' target=blank>
-							URL</a></font></td>
+					<td><div class='eliminar'><font size=$tam><a href='".$usuarios[$i][11]."' target=blank>
+							URL</a></font></div></td>
 					<td><font size=$tam>".$usuarios[$i][12]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][13]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][14]."</font></td>
@@ -119,8 +119,8 @@
 				<td><font size=$tam>".$c_usuario->get_Ciudad()."</font></td>
 				<td><font size=$tam>".$c_usuario->get_Direccion()."</font></td>
 				<td><font size=$tam>".$c_usuario->get_Edad()."</font></td>
-					<td><font size=$tam><a href='".$c_usuario->get_Foto()."' target=blank>
-							URL</a></font></td>
+					<td><div class='eliminar'><font size=$tam><a href='".$c_usuario->get_Foto()."' target=blank>
+							URL</a></font></div></td>
 				<td><font size=$tam>".$c_usuario->get_Celular()."</font></td>
 				<td><font size=$tam>".$c_usuario->get_Email()."</font></td>
 				<td><font size=$tam>".$c_usuario->get_Genero()."</font></td>

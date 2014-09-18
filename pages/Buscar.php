@@ -90,8 +90,8 @@
 					<td><font size=$tam>".$usuarios[$i][8]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][9]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][10]."</font></td>
-					<td><font size=$tam><a href='".$usuarios[$i][11]."' target=blank>
-							URL</a></font></td>
+					<td><div class='eliminar'><font size=$tam><a href='".$usuarios[$i][11]."' target=blank>
+							URL</a></font></div></td>
 					<td><font size=$tam>".$usuarios[$i][12]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][13]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][14]."</font></td>
