@@ -7,6 +7,8 @@
 
 	$recibe_pagina=$_REQUEST['page'];
 	$recibe = $recibe_pagina - 1;
+	$recibe2 = $recibe_pagina;
+	$recibe_pagina2=$recibe_pagina;
 	$tam = 2;
 	echo "<div style='overflow:scroll'><table border=1 class='CSSTableGenerator'>
 		<tr>
@@ -39,16 +41,20 @@
  		echo "</form>";
  		$usuarios = $m_usuario->mostrar_Todos();
  		$tam_usuarios = count($usuarios);
- 		$recibe *= 10;
- 		$fin = $recibe + 10;
+ 		$tam_usuarios2 = 0;
+ 		$saltos = 8;
+ 		$recibe *= $saltos;
+ 		$fin = $recibe + $saltos;
+ 		$recibe2 *= $saltos;
+ 		$fin2 = $recibe2 - $saltos;
  		for($i = $recibe; $i < $fin && $i < $tam_usuarios; $i++){
 			echo "
 				<tr>
-					<td><font size=1>
+					<td><div class='eliminar'><font size=1><center>
 						<a href='Modificar_Usuario.php?gestion=".$usuarios[$i][0]."'>
-						Editar</a>
+						Editar<br></a>
 						<a href='Eliminar_Usuario.php?gestion=".$usuarios[$i][0]."'>
-						Eliminar</a></font></td>
+						Eliminar</a></center></font></div></td>
 					<td><font size=$tam>".$usuarios[$i][0]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][1]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][2]."</font></td>
@@ -69,17 +75,27 @@
 				</tr>";
  			
  		}
+ 		echo '<tr>';
+ 		if($fin2 != 0){
+ 			$recibe_pagina2--;
+ 			echo '
+ 					<td><div class="eliminar"><font size=$tam ><center>
+ 					<a href = "Ver_Usuario.php?page='.$recibe_pagina2.'">
+ 						Anterior
+					</font></a></div></td>
+ 			';
+ 		}
+ 		
  		if($fin < $tam_usuarios){
  			$recibe_pagina++;
  			echo '
- 				<tr>
- 					<td colspan=16><font size=$tam>
+ 					<td ><div class="eliminar"><font size=$tam ><center>
  					<a href = "Ver_Usuario.php?page='.$recibe_pagina.'">
  						Siguiente
-					</font></a></td>
- 				<tr>
+					</font></a></div></td>
  			';
  		}
+ 		echo '<tr>';
 
 		echo "</table>";
  		
@@ -89,9 +105,9 @@
  		// Parte para el perfil sin permisos de ver a otros usuarios
 		echo "
 			<tr>
-				<td><font size=1>
+				<td><div class='eliminar'><font size=1>
 					<a href='Modificar_Usuario.php?gestion=".$c_usuario->get_Nid()."'>
-					Editar</a></font></td>
+					Editar</a></font></div></td>
 				<td><font size=$tam>".$c_usuario->get_Nid()."</font></td>
 				<td><font size=$tam>".$c_usuario->get_Nombres()."</font></td>
 				<td><font size=$tam>".$c_usuario->get_Apellidos()."</font></td>

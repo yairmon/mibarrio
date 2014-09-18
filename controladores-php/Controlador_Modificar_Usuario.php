@@ -29,9 +29,9 @@
 	$num_error = 1;
 	if($perfil)
 		$num_error = $m_usuario->actualizar_Datos_Usuario($_REQUEST['doc']);
-	echo '<p>docum = '.$_REQUEST['doc'];
+	/*echo '<p>docum = '.$_REQUEST['doc'];
 	echo '<p>numerror = '.$num_error;
-	echo '<p>perfil = '.$perfil;
+	echo '<p>perfil = '.$perfil;*/
 	if($num_error == 1){
 		header("Location: ../pages/Modificar_Usuario.php?gestion=1");
 	}else{

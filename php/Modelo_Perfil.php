@@ -39,23 +39,22 @@ class Modelo_Perfil{
 	}
 	
 	// Void
-	public function modificar_Perfil($perfil){
-		
+	public function modificar_Perfil($perfi){
 		$salida = false;
-		$nombre = $perfil->get_Nombre();
-		$sistema= $perfil->get_PermisoSistema();
-		$perfiles= $perfil->get_PermisoPerfiles();
-		$productos= $perfil->get_permisoProductos();
-		$inventario= $perfil->get_permisoInventario();
-		$facturacion= $perfil->get_permisoFacturacion();
-		$reportes= $perfil->get_PermisoReportes();
-		
 		try{
-			$sql = "UPDATE `perfiles` SET `Sistema`=[".$sistema."],`Perfiles`=[".$perfiles."],
-			`Productos`=[".$productos."],`Inventario`=[".$inventario."],`Facturacion`=[".$facturacion."],`Reportes`=[".$reportes."] 
-			WHERE `perfiles`.`Nombre` = '".$nombre."' ";
-			$this->bd->insertar($sql);
-			$salida = true;
+			$sql = "UPDATE perfiles SET Nombre ='".$this->perfil->get_Nombre()."',
+										Sistema ='".$this->perfil->get_PermisoSistema()."',
+										Perfiles = '".$this->perfil->get_PermisoPerfiles()."',
+										Productos = '".$this->perfil->get_PermisoProductos()."',
+										Inventario = '".$this->perfil->get_PermisoInventario()."',
+										Facturacion = '".$this->perfil->get_PermisoFacturacion()."',
+										Reportes = '".$this->perfil->get_PermisoReportes()."'
+				 WHERE Nombre='".$perfi."'";
+			if(!(strlen($this->perfil->get_Nombre()) > 1))
+				$salida = 2;
+			elseif($this->bd->insertar($sql))
+				$salida = 1;
+
 			//header("Location: ../pages/Crear_Perfil.php?gestion=exito");
 		}
 		catch(Exception $e){

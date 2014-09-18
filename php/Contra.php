@@ -15,7 +15,7 @@
 		<?php
 			{
 				if (isset($_REQUEST['error']))
-					echo "<br>El usuario no existe";
+					echo "<br>Datos inv&aacute;lidos";
 			}
 		?>
 		<p>

@@ -119,7 +119,7 @@ switch ($numero_error){
                             Foto:
                         </td>
                         <td>
-                        	<input type='text' name='fot' value='".$c_usuario->get_Foto()."' placeholder='Foto' required='required' maxlength=300/>
+                        	<input type='text' name='fot' value='".$c_usuario->get_Foto()."' placeholder='Foto' required='required' maxlength=400/>
                         </td>  
                     </tr>
                     <tr>

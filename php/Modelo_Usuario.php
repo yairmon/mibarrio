@@ -67,13 +67,26 @@ class Modelo_Usuario{
 	}
 	
 	// void
-	public function eliminar_Usuario($nombre){
+	public function eliminar_Usuario($documento){
+
+		$salida = false;
+		try{
+			$sql = "DELETE FROM `base1`.`usuarios` WHERE `usuarios`.`Documento` = '".$documento."' ";
+			$this->bd->insertar($sql);
+			$salida = true;
+			//header("Location: ../pages/Crear_Perfil.php?gestion=exito");
+		}
+		catch(Exception $e){
+				echo "error";
+		}
+		return $salida;
+
 	}
 	
 	// Boolean: Actualiza la BD con los datos que hay en el Controlador: usuario
 	public function actualizar_Datos_Usuario($documento){
-		echo "<br>->docu->".$documento;
-		echo "<br>->".$this->usuario->get_Nid();
+		/*echo "<br>->docu->".$documento;
+		echo "<br>->".$this->usuario->get_Nid();*/
 		$sql = "UPDATE usuarios SET Documento='".$this->usuario->get_Nid()."',
 									Nombres='".$this->usuario->get_Nombres()."',
 									Apellidos = '".$this->usuario->get_Apellidos()."',

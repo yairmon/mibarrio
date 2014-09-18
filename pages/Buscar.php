@@ -74,11 +74,11 @@
  		for($i = 0; $i < $tam_usuarios; $i++){
 			echo "
 				<tr>
-					<td><font size=1>
+					<td><div class='eliminar'><font size=1><center>
 						<a href='Modificar_Usuario.php?gestion=".$usuarios[$i][0]."'>
 						Editar</a>
 						<a href='Eliminar_Usuario.php?gestion=".$usuarios[$i][0]."'>
-						Eliminar</a></font></td>
+						Eliminar</a></font></center></div></td>
 					<td><font size=$tam>".$usuarios[$i][0]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][1]."</font></td>
 					<td><font size=$tam>".$usuarios[$i][2]."</font></td>

@@ -14,10 +14,10 @@
 	$new_c_perfil->crear_Perfil($nombre, $sistema, 
 		$perfiles, $productos, $inventario, $facturacion, $reportes);
 	$new_m_perfil=new Modelo_Perfil($new_c_perfil);
-	if($new_m_perfil->modificar_Perfil($new_c_perfil)){
-		header("Location: ../pages/Crear_Perfil.php?gestion=exito");
+	if($new_m_perfil->modificar_Perfil($_REQUEST['perfil'])){
+		header("Location: ../pages/Crear_Perfil.php?gestion=exito3");
 	}else{
-		header("Location: ../pages/Crear_Perfil.php?gestion=error");
+		header("Location: ../pages/Crear_Perfil.php?gestion=error3");
 	}
 	
 

@@ -127,6 +127,18 @@ case "error2":
  	}else
 		echo "<h1><i>Esto no te pertenece.</i></h1>";
 break; 
+case "exito3":
+ 	if($c_perfil->get_PermisoPerfiles()){
+		echo "<h1><i>Se ha modificado el perfil.</i></h1>";
+ 	}else
+		echo "<h1><i>Esto no te pertenece.</i></h1>";
+break; 
+case "error3":
+ 	if($c_perfil->get_PermisoPerfiles()){
+		echo "<h1><i>No se ha modificado el perfil.</i></h1>";
+ 	}else
+		echo "<h1><i>Esto no te pertenece.</i></h1>";
+break; 
 case "visualizar":
   		
 		//include_once '../controladores-php/selecionar.php';

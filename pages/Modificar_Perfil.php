@@ -5,18 +5,32 @@
 	echo"<div class='contenido'>";
 
 	$nombre = $_REQUEST['id'];
+	$nombre2 = $nombre;
+	$c_perfil2 = clone $c_perfil;
+	$m_perfil2 = new Modelo_Perfil($c_perfil2);
+	$m_perfil2->buscar_Perfil($nombre);
 
+	/*echo '<td>
+		<p>nombre = '.$c_perfil2->get_Nombre().'
+		<p>sistema = '.$c_perfil2->get_PermisoSistema().'
+		<p>perfiles = '.$c_perfil2->get_PermisoPerfiles().'
+		<p>productos = '.$c_perfil2->get_PermisoProductos().'
+		<p>inventario = '.$c_perfil2->get_PermisoInventario().'
+		<p>factu = '.$c_perfil2->get_PermisoFacturacion().'
+		<p>report = '.$c_perfil2->get_PermisoReportes().'
+	';*/
 if($c_perfil->get_PermisoPerfiles()){
 
- 		echo"<form action='../controladores-php/Controlador_Modificar_Perfil.php' method='post'>";
+ 		echo"<form action='../controladores-php/Controlador_Modificar_Perfil.php?perfil=".$nombre2."' method='post'>";
 
 
 		echo "<div class='CSSTableGenerator' >
                 <table >
                 	<tr>
+
                         <td colspan='2'>
                             Ingrese nuevos datos para el perfil: ".$nombre."
-                            <input type='text' name='nomb' class='login login-submit' value='".$nombre."' >
+                            <input type='text' name='nomb' class='login' value='".$nombre."' >
                         </td>
                      <tr>  
                 </table>
@@ -31,39 +45,87 @@ if($c_perfil->get_PermisoPerfiles()){
 					</tr>
 					 
 					<tr>
-					  <td>Sistema</td>
-					  <td><input type='radio' name='newsis' value='1' /></td>
-					  <td><input type='radio' name='newsis' value='0' checked='checked' /></td>
+					  <td>Sistema</td>";
+					  if($c_perfil2->get_PermisoSistema()){
+						  echo "
+						  <td><input type='radio' name='newsis' value='1' checked='checked'/></td>
+						  <td><input type='radio' name='newsis' value='0'/></td>";
+					  }else {
+						  echo "
+						  <td><input type='radio' name='newsis' value='1' /></td>
+						  <td><input type='radio' name='newsis' value='0' checked='checked' /></td>";
+					  }
+					  echo "
 					</tr>
 					 
 					<tr>
-					  <td>Perfiles</td>
-					  <td><input type='radio' name='newperf' value='1' /></td>
-					  <td><input type='radio' name='newperf' value='0' checked='checked' /></td>
+					  <td>Perfiles</td>";
+					if($c_perfil2->get_PermisoPerfiles()){
+						echo "
+						<td><input type='radio' name='newperf' value='1' checked='checked'/></td>
+						<td><input type='radio' name='newperf' value='0'/></td>";
+					}else{
+						echo "
+						<td><input type='radio' name='newperf' value='1' /></td>
+						<td><input type='radio' name='newperf' value='0' checked='checked' /></td>";
+					}
+					echo "
 					</tr>
 					 
 					<tr>
-					  <td>Productos</td>
-					  <td><input type='radio' name='newprod' value='1' /></td>
-					  <td><input type='radio' name='newprod' value='0' checked='checked' /></td>
+					  <td>Productos</td>";
+					if($c_perfil2->get_PermisoProductos()){
+						echo "
+						<td><input type='radio' name='newprod' value='1' checked='checked'/></td>
+						<td><input type='radio' name='newprod' value='0'/></td>";
+					}else{
+						echo "
+						<td><input type='radio' name='newprod' value='1' /></td>
+						<td><input type='radio' name='newprod' value='0' checked='checked' /></td>";
+					}
+					echo "
 					</tr>
 
 					<tr>
-					  <td>Inventario</td>
-					  <td><input type='radio' name='newinv' value='1' /></td>
-					  <td><input type='radio' name='newinv' value='0' checked='checked' /></td>
+					  <td>Inventario</td>";
+					if($c_perfil2->get_PermisoInventario()){
+						echo "
+						<td><input type='radio' name='newinv' value='1' checked='checked'/></td>
+						<td><input type='radio' name='newinv' value='0'/></td>";
+					}else{
+						echo "
+						<td><input type='radio' name='newinv' value='1' /></td>
+						<td><input type='radio' name='newinv' value='0' checked='checked' /></td>";
+					}
+					echo "
 					</tr>
 
 					<tr>
-					  <td>Facturacion</td>
-					  <td><input type='radio' name='newfac' value='1' /></td>
-					  <td><input type='radio' name='newfac' value='0' checked='checked' /></td>
+					  <td>Facturaci&oacute;n</td>";
+					if($c_perfil2->get_PermisoFacturacion()){
+						echo "
+						<td><input type='radio' name='newfac' value='1' checked='checked'/></td>
+						<td><input type='radio' name='newfac' value='0'/></td>";
+					}else{
+						echo "
+						<td><input type='radio' name='newfac' value='1' /></td>
+						<td><input type='radio' name='newfac' value='0' checked='checked' /></td>";
+					}
+					echo "
 					</tr>
 
 					<tr>
-					  <td>Reportes</td>
-					  <td><input type='radio' name='newrep' value='1' /></td>
-					  <td><input type='radio' name='newrep' value='0' checked='checked' /></td>
+					  <td>Reportes</td>";
+					if($c_perfil2->get_PermisoReportes()){
+						echo "
+						<td><input type='radio' name='newrep' value='1' checked='checked'/></td>
+						<td><input type='radio' name='newrep' value='0'/></td>";
+					}else{
+						echo "
+						<td><input type='radio' name='newrep' value='1' /></td>
+						<td><input type='radio' name='newrep' value='0' checked='checked' /></td>";
+					}
+					echo "
 					</tr>
 
 					<tr>
