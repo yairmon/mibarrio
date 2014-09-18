@@ -31,7 +31,16 @@ if($c_perfil->get_PermisoPerfiles()){
                         <td colspan='2'>
                             Ingrese nuevos datos para el perfil: ".$nombre."
                         </td>
-                     <tr>  
+                     <tr> 
+                     
+                      <tr>
+                        <td>
+                            Nombre del perfil:
+                        </td>
+                        <td > 
+                        	<input type='text' name='newnomb' value='".$nombre."' required='required' maxlength=50/>
+                        </td>
+                     </tr>	
                 </table>
             </div><br><br>";
 
