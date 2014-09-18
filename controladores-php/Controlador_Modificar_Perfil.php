@@ -2,7 +2,7 @@
 	include_once '../php/Controlador_Perfil.php';
 	include_once '../php/Modelo_Perfil.php';
 
-	$nombre = $_REQUEST['perfil'];
+	$nombre = $_REQUEST['newnomb'];
 	$sistema= $_REQUEST['newsis'];
 	$perfiles= $_REQUEST['newperf'];
 	$productos= $_REQUEST['newprod'];
