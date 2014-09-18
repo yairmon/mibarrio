@@ -103,7 +103,7 @@ switch ($numero_error){
                             Direcci&oacute;n:
                         </td>
                         <td>
-                        	<input type='text' name='dire' value='".$c_usuario->get_Direccion()."' placeholder='Direcci&oacute;' required='required' maxlength=30/>
+                        	<input type='text' name='dire' value='".$c_usuario->get_Direccion()."' placeholder='Direcci&oacute;n' required='required' maxlength=30/>
                         </td>  
                     </tr>
                     <tr>
@@ -119,7 +119,7 @@ switch ($numero_error){
                             Foto:
                         </td>
                         <td>
-                        	<input type='text' name='fot' value='".$c_usuario->get_Foto()."' placeholder='Foto' required='required' maxlength=200/>
+                        	<input type='text' name='fot' value='".$c_usuario->get_Foto()."' placeholder='Foto' required='required' maxlength=300/>
                         </td>  
                     </tr>
                     <tr>

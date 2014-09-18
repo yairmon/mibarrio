@@ -119,6 +119,28 @@ class Modelo_Usuario{
 		return $salida;
 	}
 	
+	public function crear_Usuario(){
+		echo 'Valor de doc= '.$this->usuario->get_Nid();
+		$sql = "INSERT INTO usuarios VALUES ('".$this->usuario->get_Nid()."',
+									'".$this->usuario->get_Nombres()."',
+									'".$this->usuario->get_Apellidos()."',
+									'".$this->usuario->get_Usuario()."',
+									'".$this->usuario->get_Password()."',
+									'".$this->usuario->get_Pregunta()."',
+									'".$this->usuario->get_Respuesta()."',
+									'".$this->usuario->get_TipoId()."',
+									'".$this->usuario->get_Ciudad()."',
+									'".$this->usuario->get_Direccion()."',
+									'".$this->usuario->get_Edad()."',
+									'".$this->usuario->get_Foto()."',
+									'".$this->usuario->get_Celular()."',
+									'".$this->usuario->get_Email()."',
+									'".$this->usuario->get_Genero()."',
+									'".$this->usuario->get_Perfil()."')";
+
+		return $this->bd->insertar($sql);
+	}
+	
 	public function cambiar_Contra($nombre, $apell, $pass){
 	}
 

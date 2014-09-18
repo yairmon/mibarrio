@@ -40,15 +40,53 @@ class Modelo_Perfil{
 	
 	// Void
 	public function modificar_Perfil($perfil){
+		
+		$salida = false;
+		$nombre = $perfil->get_Nombre();
+		$sistema= $perfil->get_PermisoSistema();
+		$perfiles= $perfil->get_PermisoPerfiles();
+		$productos= $perfil->get_permisoProductos();
+		$inventario= $perfil->get_permisoInventario();
+		$facturacion= $perfil->get_permisoFacturacion();
+		$reportes= $perfil->get_PermisoReportes();
+		
+		try{
+			$sql = "UPDATE `perfiles` SET `Sistema`=[".$sistema."],`Perfiles`=[".$perfiles."],
+			`Productos`=[".$productos."],`Inventario`=[".$inventario."],`Facturacion`=[".$facturacion."],`Reportes`=[".$reportes."] 
+			WHERE `perfiles`.`Nombre` = '".$nombre."' ";
+			$this->bd->insertar($sql);
+			$salida = true;
+			//header("Location: ../pages/Crear_Perfil.php?gestion=exito");
+		}
+		catch(Exception $e){
+				echo "error";
+		}
+		return $salida;
 	}
 	
 	// Void: Busca en la BD el $perfi, y lo elimina
 	public function eliminar_Perfil($perfi){
+
+		$nombre=$perfi;
+
+		$salida = false;
+		try{
+			$sql = "DELETE FROM `base1`.`perfiles` WHERE `perfiles`.`Nombre` = '".$nombre."' ";
+			$this->bd->insertar($sql);
+			$salida = true;
+			//header("Location: ../pages/Crear_Perfil.php?gestion=exito");
+		}
+		catch(Exception $e){
+				echo "error";
+		}
+		return $salida;
+
+
 	}
 	
 	// Void: Busca en la BD el perfil y lo guarda en el Controlador
 	public function buscar_Perfil($perfi){
-		$sql = "select Nombre,Sistema,Perfiles,Productos,Inventario,Facturacion
+		$sql = "select Nombre,Sistema,Perfiles,Productos,Inventario,Facturacion, Reportes
 	                        from perfiles where Nombre='$perfi'";
 		$registros = $this->bd->consultar($sql);
 		if($reg=mysql_fetch_array($registros)){
@@ -58,6 +96,7 @@ class Modelo_Perfil{
 			$this->perfil->set_PermisoProductos($reg['Productos']);
 			$this->perfil->set_PermisoInventario($reg['Inventario']);
 			$this->perfil->set_PermisoFacturacion($reg['Facturacion']);
+			$this->perfil->set_PermisoReportes($reg['Reportes']);
 
 		}
 	}

@@ -65,7 +65,7 @@ switch ($recibe_pagina){
 					</tr>
 
 					<tr>
-					  <td>Facturaci&oacute;n</td>
+					  <td>Facturacion</td>
 					  <td><input type='radio' name='fac' value='1' /></td>
 					  <td><input type='radio' name='fac' value='0' checked='checked' /></td>
 					</tr>
@@ -112,6 +112,18 @@ break;
 case "error":
  	if($c_perfil->get_PermisoPerfiles()){
 		echo "<h1><i>No se ha creado el perfil.</i></h1>";
+ 	}else
+		echo "<h1><i>Esto no te pertenece.</i></h1>";
+break;
+case "exito2":
+ 	if($c_perfil->get_PermisoPerfiles()){
+		echo "<h1><i>Se ha borrado el perfil.</i></h1>";
+ 	}else
+		echo "<h1><i>Esto no te pertenece.</i></h1>";
+break; 
+case "error2":
+ 	if($c_perfil->get_PermisoPerfiles()){
+		echo "<h1><i>No se ha borrado el perfil.</i></h1>";
  	}else
 		echo "<h1><i>Esto no te pertenece.</i></h1>";
 break; 
@@ -162,7 +174,9 @@ case "visualizar-seleccion":
 
 		$namePE = $consulta_perfil->get_Nombre();
 
-		echo "<div class='CSSTableGenerator'><table>
+		echo "
+
+		<div class='CSSTableGenerator'><table>
 					<tr>
 					  <td ><strong>Perfil: ".$namePE."</strong></td>
 					 
@@ -220,7 +234,7 @@ case "visualizar-seleccion":
 					</tr>
 
 					<tr>
-					  <td>Facturaci&oacute;n</td>";
+					  <td>Facturacion</td>";
 					  if($consulta_perfil->get_PermisoFacturacion()){
 							echo "<td><strong>Si</strong></td>";	
 						}
@@ -240,21 +254,25 @@ case "visualizar-seleccion":
 					</tr>
 
 					<tr>					  
-					  <td colspan='2'><br></td>
+					  <td colspan='2'></td>
 					</tr>
 
 					<tr>
 					  <td  TD BGCOLOR='#FFFFFF'>
-					  <input type='submit' name='editarP' class='login login-submit' value='Editar perfil'>
+
+					  	 <a href='Modificar_Perfil.php?id=".$namePE."'><div class='links2 links2-submit'>
+						 <b>Modificar perfil</b></div></a>
+					  
 					  </td>
 
 					  <td colspan='2' TD BGCOLOR='#FFFFFF'>
-					  <input type='reset' name='borrarP' class='login login-submit' value='Eliminar perfil'>
+					  	<a href='../controladores-php/Controlador_Borrar_Perfil.php?id=".$namePE."'><div class='links2 links2-submit'>
+						<b>Eliminar perfil</b></div></a>
+
 					  </td>
 					</tr>
 
 			</table></div>";
-		echo"</fomr>";	
 break;		
 default:
 echo "<h1><b>Bienvenido, ".$c_usuario->get_Nombres().".</b></h1>";
