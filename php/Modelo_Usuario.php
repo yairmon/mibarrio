@@ -151,7 +151,31 @@ class Modelo_Usuario{
 									'".$this->usuario->get_Genero()."',
 									'".$this->usuario->get_Perfil()."')";
 
-		return $this->bd->insertar($sql);
+		$salida = 0;
+		// Validacion de los minimos
+		if(!(strlen($this->usuario->get_Nid()) > 7))			$salida = 2;
+		elseif(!(strlen($this->usuario->get_Nombres()) > 1))	$salida = 3;
+		elseif(!(strlen($this->usuario->get_Apellidos()) > 1))	$salida = 4;
+		elseif(!(strlen($this->usuario->get_Usuario()) > 4))	$salida = 5;
+		elseif(!(strlen($this->usuario->get_Password()) > 4))	$salida = 6;
+		elseif(!(strlen($this->usuario->get_Pregunta()) > 9))	$salida = 7;
+		elseif(!(strlen($this->usuario->get_Respuesta()) > 1))	$salida = 8;
+		elseif(!(strlen($this->usuario->get_TipoId()) > 1))		$salida = 9;
+		elseif(!(strlen($this->usuario->get_Ciudad()) > 1))		$salida = 10;
+		elseif(!(strlen($this->usuario->get_Direccion()) > 2))	$salida = 11;
+		elseif(!(strlen($this->usuario->get_Edad()) > 0))		$salida = 12;
+		elseif(!(strlen($this->usuario->get_Foto()) > 2))		$salida = 13;
+		elseif(!(strlen($this->usuario->get_Celular()) > 7))	$salida = 14;
+		elseif(!(strlen($this->usuario->get_Email()) > 6))		$salida = 15;
+		elseif(!(strlen($this->usuario->get_Genero()) > 0))		$salida = 16;
+		elseif(!(strlen($this->usuario->get_Perfil()) > 0))		$salida = 17;
+
+		
+		elseif($this->bd->insertar($sql))
+			$salida = true;;
+		
+
+		return $salida;
 	}
 	
 	public function cambiar_Contra($nombre, $apell, $pass){
