@@ -42,14 +42,18 @@ class Modelo_Perfil{
 	public function modificar_Perfil($perfi){
 		$salida = false;
 		try{
-			$sql = "UPDATE perfiles SET Nombre ='".$this->perfil->get_Nombre()."',
-										Sistema ='".$this->perfil->get_PermisoSistema()."',
-										Perfiles = '".$this->perfil->get_PermisoPerfiles()."',
-										Productos = '".$this->perfil->get_PermisoProductos()."',
-										Inventario = '".$this->perfil->get_PermisoInventario()."',
-										Facturacion = '".$this->perfil->get_PermisoFacturacion()."',
-										Reportes = '".$this->perfil->get_PermisoReportes()."'
-				 WHERE Nombre='".$perfi."'";
+
+				 $sql="UPDATE usuarios, perfiles  
+            SET usuarios.perfiles_Nombre = '".$this->perfil->get_Nombre()."', 
+            							perfiles.Nombre = '".$this->perfil->get_Nombre()."',
+										perfiles.Sistema ='".$this->perfil->get_PermisoSistema()."',
+										perfiles.Perfiles = '".$this->perfil->get_PermisoPerfiles()."',
+										perfiles.Productos = '".$this->perfil->get_PermisoProductos()."',
+										perfiles.Inventario = '".$this->perfil->get_PermisoInventario()."',
+										perfiles.Facturacion = '".$this->perfil->get_PermisoFacturacion()."',
+										perfiles.Reportes = '".$this->perfil->get_PermisoReportes()."'              
+            WHERE (usuarios.perfiles_Nombre = '$perfi' AND perfiles.Nombre = '$perfi')";
+
 			if(!(strlen($this->perfil->get_Nombre()) > 1))
 				$salida = 2;
 			elseif($this->bd->insertar($sql))
@@ -60,6 +64,7 @@ class Modelo_Perfil{
 		catch(Exception $e){
 				echo "error";
 		}
+
 		return $salida;
 	}
 	
