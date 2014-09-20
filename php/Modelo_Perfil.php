@@ -23,17 +23,22 @@ class Modelo_Perfil{
 		$facturacion= $perfil->get_permisoFacturacion();
 		$reportes= $perfil->get_PermisoReportes();
 		
-		try{
+		$salida = "";
+		if(!$sistema && !$perfiles && !$productos && !$inventario && !$facturacion && !$reportes){
+			$salida = "error4";
+		}else{
+			try{
 
 
-			$sql = "INSERT INTO perfiles (Nombre, Sistema, Perfiles, Productos, Inventario, Facturacion, Reportes) 
-			VALUES ('$nombre', '$sistema', '$perfiles', '$productos', '$inventario', '$facturacion', '$reportes')";
-			$this->bd->insertar($sql);
-			$salida = true;
-			//header("Location: ../pages/Crear_Perfil.php?gestion=exito");
-		}
-		catch(Exception $e){
-				echo "error";
+				$sql = "INSERT INTO perfiles (Nombre, Sistema, Perfiles, Productos, Inventario, Facturacion, Reportes) 
+				VALUES ('$nombre', '$sistema', '$perfiles', '$productos', '$inventario', '$facturacion', '$reportes')";
+				$this->bd->insertar($sql);
+				$salida = "exito";
+				//header("Location: ../pages/Crear_Perfil.php?gestion=exito");
+			}
+			catch(Exception $e){
+					echo "error";
+			}
 		}
 		return $salida;
 	}

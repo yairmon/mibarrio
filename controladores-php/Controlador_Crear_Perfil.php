@@ -14,11 +14,12 @@
 	$c_perfil->crear_Perfil($nombre, $sistema, 
 		$perfiles, $productos, $inventario, $facturacion, $reportes);
 	$m_perfil=new Modelo_Perfil($c_perfil);
-	if($m_perfil->crear_Perfil($c_perfil)){
+	$info = $m_perfil->crear_Perfil($c_perfil);
+	/*if( == "exito"){
 		header("Location: ../pages/Crear_Perfil.php?gestion=exito");
-	}else{
-		header("Location: ../pages/Crear_Perfil.php?gestion=error");
-	}
+	}else{*/
+		header("Location: ../pages/Crear_Perfil.php?gestion=".$info);
+	//}
 	
 
 ?>

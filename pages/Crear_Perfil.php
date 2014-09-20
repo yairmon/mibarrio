@@ -138,6 +138,12 @@ case "error3":
 		echo "<h1><i>No se ha modificado el perfil.</i></h1>";
  	}else
 		echo "<h1><i>Esto no te pertenece.</i></h1>";
+break;  
+case "error4":
+ 	if($c_perfil->get_PermisoPerfiles()){
+		echo "<h1><i>No se ha modificado el perfil, No deben haber perfiles sin almenos un permiso</i></h1>";
+ 	}else
+		echo "<h1><i>Esto no te pertenece.</i></h1>";
 break; 
 case "visualizar":
   		

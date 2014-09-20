@@ -19,8 +19,7 @@ echo"<div class='contenido'>";
 		
 		$nameUS = $c_usuario2->get_Nombres();
 		$idUS = $c_usuario2->get_Nid();
- 		echo" nameUS = $nameUS<br> idUS=$idUS<br>
- 		<form action='../controladores-php/Controlador_Contra_Usuario.php?id=".$idUS."' method='post'>";
+ 		echo" <form action='../controladores-php/Controlador_Contra_Usuario.php?id=".$idUS."' method='post'>";
 		echo "
 
 		<div class='CSSTableGenerator'><table>
