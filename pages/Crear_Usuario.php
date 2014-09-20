@@ -33,6 +33,14 @@ switch ($numero_error){
                     </tr>
                     <tr>
                         <td>
+                            Tipo Documento:
+                        </td>
+                        <td>
+                        	<input type='text' name='tipo_id'  placeholder='Tipo Documento' required='required' maxlength=5/>
+                        </td>  
+                    </tr>
+                    <tr>
+                        <td>
                             Nombres:
                         </td>
                         <td>
@@ -77,14 +85,6 @@ switch ($numero_error){
                         </td>
                         <td>
                         	<input type='text' name='respues'  placeholder='Respuesta' required='required' maxlength=150/>
-                        </td>  
-                    </tr>
-                    <tr>
-                        <td>
-                            Tipo Documento:
-                        </td>
-                        <td>
-                        	<input type='text' name='tipo_id'  placeholder='Tipo Documento' required='required' maxlength=5/>
                         </td>  
                     </tr>
                     <tr>

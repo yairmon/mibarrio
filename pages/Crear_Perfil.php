@@ -284,7 +284,7 @@ case "visualizar-seleccion":
 					  </td>
 
 					  <td colspan='2' TD BGCOLOR='#FFFFFF'>
-					  	<a href='../controladores-php/Controlador_Borrar_Perfil.php?id=".$namePE."'><div class='links2 links2-submit'>
+					  	<a href='Eliminar_Perfil.php?id=".$namePE."'><div class='links2 links2-submit'>
 						<b>Eliminar perfil</b></div></a>
 
 					  </td>
