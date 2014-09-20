@@ -6,7 +6,7 @@
 	$nombres= $_REQUEST['nom'];
 	$apellidos= $_REQUEST['apell'];
 	$usuario= $_REQUEST['usu'];
-	$password= $_REQUEST['pass'];
+	$password= "";
 	$pregunta= $_REQUEST['pregun'];
 	$respuesta= $_REQUEST['respues'];
 	$tipoid= $_REQUEST['tipo_id'];
@@ -28,7 +28,7 @@
 
 	$num_error = 1;
 	if($perfil)
-		$num_error = $m_usuario->actualizar_Datos_Usuario($_REQUEST['doc']);
+		$num_error = $m_usuario->actualizar_Datos_Usuario2($_REQUEST['doc']);
 	/*echo '<p>docum = '.$_REQUEST['doc'];
 	echo '<p>numerror = '.$num_error;
 	echo '<p>perfil = '.$perfil;*/

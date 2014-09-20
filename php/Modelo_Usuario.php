@@ -83,7 +83,7 @@ class Modelo_Usuario{
 
 	}
 	
-	// Boolean: Actualiza la BD con los datos que hay en el Controlador: usuario
+	// int: Actualiza la BD con los datos que hay en el Controlador: usuario
 	public function actualizar_Datos_Usuario($documento){
 		/*echo "<br>->docu->".$documento;
 		echo "<br>->".$this->usuario->get_Nid();*/
@@ -112,6 +112,53 @@ class Modelo_Usuario{
 		elseif(!(strlen($this->usuario->get_Apellidos()) > 1))	$salida = 4;
 		elseif(!(strlen($this->usuario->get_Usuario()) > 4))	$salida = 5;
 		elseif(!(strlen($this->usuario->get_Password()) > 4))	$salida = 6;
+		elseif(!(strlen($this->usuario->get_Pregunta()) > 9))	$salida = 7;
+		elseif(!(strlen($this->usuario->get_Respuesta()) > 1))	$salida = 8;
+		elseif(!(strlen($this->usuario->get_TipoId()) > 1))		$salida = 9;
+		elseif(!(strlen($this->usuario->get_Ciudad()) > 1))		$salida = 10;
+		elseif(!(strlen($this->usuario->get_Direccion()) > 2))	$salida = 11;
+		elseif(!(strlen($this->usuario->get_Edad()) > 0))		$salida = 12;
+		elseif(!(strlen($this->usuario->get_Foto()) > 2))		$salida = 13;
+		elseif(!(strlen($this->usuario->get_Celular()) > 7))	$salida = 14;
+		elseif(!(strlen($this->usuario->get_Email()) > 6))		$salida = 15;
+		elseif(!(strlen($this->usuario->get_Genero()) > 0))		$salida = 16;
+		elseif(!(strlen($this->usuario->get_Perfil()) > 0))		$salida = 17;
+
+		
+		elseif($this->bd->insertar($sql))
+			$salida = true;;
+		
+
+		return $salida;
+	}
+	
+	// int: Actualiza la BD con los datos que hay en el Controlador: usuario
+	public function actualizar_Datos_Usuario2($documento){
+		/*echo "<br>->docu->".$documento;
+		echo "<br>->".$this->usuario->get_Nid();*/
+		$sql = "UPDATE usuarios SET Documento='".$this->usuario->get_Nid()."',
+									Nombres='".$this->usuario->get_Nombres()."',
+									Apellidos = '".$this->usuario->get_Apellidos()."',
+									Usuario = '".$this->usuario->get_Usuario()."',
+									Pregunta = '".$this->usuario->get_Pregunta()."',
+									Respuesta = '".$this->usuario->get_Respuesta()."',
+									Tipo_Documento = '".$this->usuario->get_TipoId()."',
+									Ciudad = '".$this->usuario->get_Ciudad()."',
+									Direccion = '".$this->usuario->get_Direccion()."',
+									Edad = '".$this->usuario->get_Edad()."',
+									Foto = '".$this->usuario->get_Foto()."',
+									Telefono = '".$this->usuario->get_Celular()."',
+									Correo_Electronico = '".$this->usuario->get_Email()."',
+									Genero = '".$this->usuario->get_Genero()."',
+									perfiles_Nombre = '".$this->usuario->get_Perfil()."'
+			 WHERE Documento='".$documento."'";
+
+		$salida = 0;
+		// Validacion de los minimos
+		if(!(strlen($this->usuario->get_Nid()) > 7))			$salida = 2;
+		elseif(!(strlen($this->usuario->get_Nombres()) > 1))	$salida = 3;
+		elseif(!(strlen($this->usuario->get_Apellidos()) > 1))	$salida = 4;
+		elseif(!(strlen($this->usuario->get_Usuario()) > 4))	$salida = 5;
 		elseif(!(strlen($this->usuario->get_Pregunta()) > 9))	$salida = 7;
 		elseif(!(strlen($this->usuario->get_Respuesta()) > 1))	$salida = 8;
 		elseif(!(strlen($this->usuario->get_TipoId()) > 1))		$salida = 9;
@@ -178,7 +225,20 @@ class Modelo_Usuario{
 		return $salida;
 	}
 	
-	public function cambiar_Contra($nombre, $apell, $pass){
+	public function cambiar_Contra($documento, $n_pass){
+		$sql = "UPDATE usuarios SET Password='".$n_pass."'
+			 WHERE Documento='".$documento."'";
+
+		$salida = 0;
+
+		// Validacion de los minimos
+		if(!(strlen($n_pass) > 4))
+			$salida = 6;
+		
+		elseif($this->bd->insertar($sql))
+			$salida = true;;
+
+		return $salida;
 	}
 
 	public function desconectarBD(){

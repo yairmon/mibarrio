@@ -36,14 +36,6 @@ switch ($numero_error){
                     </tr>
                     <tr>
                         <td>
-                            Tipo Documento:
-                        </td>
-                        <td>
-                          <input type='text' name='tipo_id' value='".$c_usuario->get_TipoId()."' placeholder='Tipo Documento' required='required' maxlength=5/>
-                        </td>  
-                    </tr>
-                    <tr>
-                        <td>
                             Nombres:
                         </td>
                         <td>
@@ -68,6 +60,14 @@ switch ($numero_error){
                     </tr>
                     <tr>
                         <td>
+                            Password:
+                        </td>
+                        <td>
+                          <input type='password' name='pass' value='".$c_usuario->get_Password()."' placeholder='Password' required='required' maxlength=8/>
+                        </td>  
+                    </tr>
+                    <tr>
+                        <td>
                             Pregunta:
                         </td>
                         <td>
@@ -80,6 +80,14 @@ switch ($numero_error){
                         </td>
                         <td>
                           <input type='text' name='respues' value='".$c_usuario->get_Respuesta()."' placeholder='Respuesta' required='required' maxlength=150/>
+                        </td>  
+                    </tr>
+                    <tr>
+                        <td>
+                            Tipo Documento:
+                        </td>
+                        <td>
+                          <input type='text' name='tipo_id' value='".$c_usuario->get_TipoId()."' placeholder='Tipo Documento' required='required' maxlength=5/>
                         </td>  
                     </tr>
                     <tr>

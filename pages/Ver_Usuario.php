@@ -17,7 +17,7 @@
 			<td><font size=$tam>Nombres</font></td>
 			<td><font size=$tam>Apellidos</font></td>
 			<td><font size=$tam>Usuario</font></td>
-			<td><font size=$tam>Password</font></td>
+			<td><font size=$tam>Contrase&ntilde;a</font></td>
 			<td><font size=$tam>Pregunta</font></td>
 			<td><font size=$tam>Respuesta</font></td>
 			<td><font size=$tam>Tipo Id</font></td>
@@ -51,7 +51,7 @@
 			echo "
 				<tr>
 					<td><div class='eliminar'><font size=1><center>
-						<a href='Modificar_Usuario.php?gestion=".$usuarios[$i][0]."'>
+						<a href='Visualizar_Usuario.php?gestion=".$usuarios[$i][0]."'>
 						Editar<br></a>
 						<a href='Eliminar_Usuario.php?gestion=".$usuarios[$i][0]."'>
 						Eliminar</a></center></font></div></td>
@@ -106,7 +106,7 @@
 		echo "
 			<tr>
 				<td><div class='eliminar'><font size=1>
-					<a href='Modificar_Usuario.php?gestion=".$c_usuario->get_Nid()."'>
+					<a href='Visualizar_Usuario.php?gestion=".$c_usuario->get_Nid()."'>
 					Editar</a></font></div></td>
 				<td><font size=$tam>".$c_usuario->get_Nid()."</font></td>
 				<td><font size=$tam>".$c_usuario->get_Nombres()."</font></td>

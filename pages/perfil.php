@@ -61,7 +61,7 @@
 				$enlace_sistema = "alto";
 			}
 			echo "<div class='login-help'>";
-			echo "<a href='Sistema.php?gestion=$enlace_sistema'>Sistema</a></div>";
+			echo "<a href='Sistema.php?gestion=$enlace_sistema'>Gesti&oacute;n de usuarios</a></div>";
 
 			if($c_perfil->get_PermisoPerfiles()){
 				echo "<div class='login-help'>";
