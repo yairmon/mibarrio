@@ -75,7 +75,7 @@
 			echo "
 				<tr>
 					<td><div class='eliminar'><font size=1><center>
-						<a href='Modificar_Usuario.php?gestion=".$usuarios[$i][0]."'>
+						<a href='Visualizar_Usuario.php?gestion=".$usuarios[$i][0]."'>
 						Editar</a>
 						<a href='Eliminar_Usuario.php?gestion=".$usuarios[$i][0]."'>
 						Eliminar</a></font></center></div></td>

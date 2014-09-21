@@ -141,10 +141,28 @@ case "error3":
 break;  
 case "error4":
  	if($c_perfil->get_PermisoPerfiles()){
+		echo "<h1><i>No se ha creado el perfil, El nombre del perfil debe tener minimo 2 Caracteres</i></h1>";
+ 	}else
+		echo "<h1><i>Esto no te pertenece.</i></h1>";
+break;
+case "error5":
+ 	if($c_perfil->get_PermisoPerfiles()){
+		echo "<h1><i>No se ha creado el perfil, No deben haber perfiles sin almenos un permiso</i></h1>";
+ 	}else
+		echo "<h1><i>Esto no te pertenece.</i></h1>";
+break;
+case "error6":
+ 	if($c_perfil->get_PermisoPerfiles()){
+		echo "<h1><i>No se ha modificado el perfil, El nombre del perfil debe tener minimo 2 Caracteres</i></h1>";
+ 	}else
+		echo "<h1><i>Esto no te pertenece.</i></h1>";
+break;
+case "error7":
+ 	if($c_perfil->get_PermisoPerfiles()){
 		echo "<h1><i>No se ha modificado el perfil, No deben haber perfiles sin almenos un permiso</i></h1>";
  	}else
 		echo "<h1><i>Esto no te pertenece.</i></h1>";
-break; 
+break;
 case "visualizar":
   		
 		//include_once '../controladores-php/selecionar.php';

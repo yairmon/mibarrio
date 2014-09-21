@@ -2,9 +2,19 @@
 
   include ("perfil.php"); 
 
-  $numero_error=$_REQUEST['gestion'];
-  if($c_perfil->get_PermisoSistema())
-    $m_usuario->buscar_Usuario2($numero_error);
+    $numero_error=$_REQUEST['gestion'];
+    //Esto es para diferenciar el perfil del usuario que modifica, al usuario que están modificando
+
+    $c_usuario2 = clone $c_usuario;
+    $m_usuario2 = new Modelo_Usuario($c_usuario2);
+    $c_perfil2 = clone $c_perfil;
+    $m_perfil2 = new Modelo_Perfil($c_perfil2);
+//    $m_usuario2->buscar_Usuario2($numero_error);
+
+    if($c_perfil->get_PermisoSistema()){
+        $m_usuario2->buscar_Usuario2($numero_error);
+        $m_perfil2->buscar_Perfil2($c_usuario2->get_Perfil());
+    }
   //else $documento = $c_usuario->get_Nid();
 
 
@@ -12,10 +22,10 @@ echo"<div class='contenido'>";
 switch ($numero_error){ 
  default:
   //todo lo de Modificar el usuario
-  $_perfi = $c_usuario->get_Perfil();
+  $_perfi = $c_usuario2->get_Perfil();
   /*if($c_perfil->get_PermisoSistema()){
     echo"<form action='../controladores-php/Controlador_Modificar_Usuario.php?perfi=0' method='post'>";
-  }else*/ echo"<form action='../controladores-php/Controlador_Modificar_Usuario.php?doc=".$c_usuario->get_Nid()."&perfi=".$_perfi."' method='post'>";
+  }else*/ echo"<form action='../controladores-php/Controlador_Modificar_Usuario.php?doc=".$c_usuario2->get_Nid()."&perfi=".$_perfi."' method='post'>";
 
     echo "<div class='CSSTableGenerator' >
                 <table >
@@ -30,7 +40,7 @@ switch ($numero_error){
                             Documento:
                         </td>
                         <td >";
-                         echo "<input type='text' name='n_id' value='".$c_usuario->get_Nid()."' placeholder='Documento' required='required' maxlength=15 />";
+                         echo "<input type='text' name='n_id' value='".$c_usuario2->get_Nid()."' placeholder='Documento' required='required' maxlength=15 />";
                             echo "
                         </td>
                     </tr>
@@ -39,15 +49,36 @@ switch ($numero_error){
                             Tipo Documento:
                         </td>
                         <td>
-                          <input type='text' name='tipo_id' value='".$c_usuario->get_TipoId()."' placeholder='Tipo Documento' required='required' maxlength=5/>
-                        </td>  
+                            <select name='tipo_id' class='select'>";
+                        // Aqui el algoritmo para hacer un combobox para el genero
+                        if($c_usuario2->get_TipoId() == "CC"){
+                            echo "
+                                <option value='CC' selected>CC</option>
+                                <option value='TI'>TI</option>
+                                <option value='Pasap'>Pasaporte</option>
+                            </select>";
+                        }elseif($c_usuario2->get_TipoId() == "TI") {
+                            echo "
+                                <option value='CC'>CC</option>
+                                <option value='TI' selected>TI</option>
+                                <option value='Pasap'>Pasaporte</option>
+                            </select>";
+                        }else {
+                            echo "
+                                <option value='CC'>CC</option>
+                                <option value='TI'>TI</option>
+                                <option value='Pasap' selected>Pasaporte</option>
+                            </select>";
+                        }
+                        echo "
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             Nombres:
                         </td>
                         <td>
-                          <input type='text' name='nom' value='".$c_usuario->get_Nombres()."' placeholder='Nombres' required='required' maxlength=30/>
+                          <input type='text' name='nom' value='".$c_usuario2->get_Nombres()."' placeholder='Nombres' required='required' maxlength=30/>
                         </td>
                     </tr>
                     <tr>
@@ -55,7 +86,7 @@ switch ($numero_error){
                             Apellidos:
                         </td>
                         <td>
-                          <input type='text' name='apell' value='".$c_usuario->get_Apellidos()."' placeholder='Apellidos' required='required' maxlength=30/>
+                          <input type='text' name='apell' value='".$c_usuario2->get_Apellidos()."' placeholder='Apellidos' required='required' maxlength=30/>
                         </td>  
                     </tr>
                     <tr>
@@ -63,7 +94,7 @@ switch ($numero_error){
                             Usuario:
                         </td>
                         <td>
-                          <input type='text' name='usu' value='".$c_usuario->get_Usuario()."' placeholder='Usuario' required='required' maxlength=8/>
+                          <input type='text' name='usu' value='".$c_usuario2->get_Usuario()."' placeholder='Usuario' required='required' maxlength=8/>
                         </td>  
                     </tr>
                     <tr>
@@ -71,7 +102,7 @@ switch ($numero_error){
                             Pregunta:
                         </td>
                         <td>
-                          <input type='text' name='pregun' value='".$c_usuario->get_Pregunta()."' placeholder='Pregunta' required='required' maxlength=150/>
+                          <input type='text' name='pregun' value='".$c_usuario2->get_Pregunta()."' placeholder='Pregunta' required='required' maxlength=150/>
                         </td>  
                     </tr>
                     <tr>
@@ -79,7 +110,7 @@ switch ($numero_error){
                             Respuesta:
                         </td>
                         <td>
-                          <input type='text' name='respues' value='".$c_usuario->get_Respuesta()."' placeholder='Respuesta' required='required' maxlength=150/>
+                          <input type='text' name='respues' value='".$c_usuario2->get_Respuesta()."' placeholder='Respuesta' required='required' maxlength=150/>
                         </td>  
                     </tr>
                     <tr>
@@ -87,7 +118,7 @@ switch ($numero_error){
                             Ciudad:
                         </td>
                         <td>
-                          <input type='text' name='ciud' value='".$c_usuario->get_Ciudad()."' placeholder='Ciudad' required='required' maxlength=30/>
+                          <input type='text' name='ciud' value='".$c_usuario2->get_Ciudad()."' placeholder='Ciudad' required='required' maxlength=30/>
                         </td>  
                     </tr>
                     <tr>
@@ -95,7 +126,7 @@ switch ($numero_error){
                             Direcci&oacute;n:
                         </td>
                         <td>
-                          <input type='text' name='dire' value='".$c_usuario->get_Direccion()."' placeholder='Direcci&oacute;n' required='required' maxlength=30/>
+                          <input type='text' name='dire' value='".$c_usuario2->get_Direccion()."' placeholder='Direcci&oacute;n' required='required' maxlength=30/>
                         </td>  
                     </tr>
                     <tr>
@@ -103,7 +134,7 @@ switch ($numero_error){
                             Edad:
                         </td>
                         <td>
-                          <input type='text' name='_edad' value='".$c_usuario->get_Edad()."' placeholder='Edad' required='required' maxlength=3/>
+                          <input type='text' name='_edad' value='".$c_usuario2->get_Edad()."' placeholder='Edad' required='required' maxlength=3/>
                         </td>  
                     </tr>
                     <tr>
@@ -111,7 +142,7 @@ switch ($numero_error){
                             Foto:
                         </td>
                         <td>
-                          <input type='text' name='fot' value='".$c_usuario->get_Foto()."' placeholder='Foto' required='required' maxlength=400/>
+                          <input type='text' name='fot' value='".$c_usuario2->get_Foto()."' placeholder='Foto' required='required' maxlength=400/>
                         </td>  
                     </tr>
                     <tr>
@@ -119,7 +150,7 @@ switch ($numero_error){
                             Tel&eacute;fono:
                         </td>
                         <td>
-                          <input type='text' name='celu' value='".$c_usuario->get_Celular()."' placeholder='Tel&eacute;fono' required='required' maxlength=10/>
+                          <input type='text' name='celu' value='".$c_usuario2->get_Celular()."' placeholder='Tel&eacute;fono' required='required' maxlength=10/>
                         </td>  
                     </tr>
                     <tr>
@@ -127,7 +158,7 @@ switch ($numero_error){
                             Correo Electr&oacute;nico:
                         </td>
                         <td>
-                          <input type='text' name='e_mail' value='".$c_usuario->get_Email()."' placeholder='Correo Electr&oacute;nico' required='required' maxlength=30/>
+                          <input type='text' name='e_mail' value='".$c_usuario2->get_Email()."' placeholder='Correo Electr&oacute;nico' required='required' maxlength=60/>
                         </td>  
                     </tr>
                     <tr>
@@ -135,27 +166,42 @@ switch ($numero_error){
                             G&eacute;nero:
                         </td>
                         <td>
-                          <input type='text' name='gene' value='".$c_usuario->get_Genero()."' placeholder='G&eacute;nero' required='required' maxlength=1/>
+                            <select name='gene' class='select'>
+                        ";
+                        // Aqui el algoritmo para hacer un combobox para el genero
+                        if($c_usuario2->get_Genero() == "M"){
+                            echo "
+                                    <option value='M' selected>M</option>
+                                    <option value='F'>F</option>
+                                </select>";
+                        }else {
+                            echo "
+                                    <option value='M'>M</option>
+                                    <option value='F' selected>F</option>
+                                </select>";
+                        }
+                        echo "
                         </td>  
                     </tr>
                     <tr>
                         <td>
-                            Perfil (Actual: "; echo $c_usuario->get_Perfil()."):
+                            Perfil (Actual: "; echo $c_perfil2->get_Nombre()."):
                         </td>";
+
                         //Aqui el algoritmo para hacer un combobox para los perfiles
-                        $arr_perfiles = $m_perfil->mostrar_Todos();
+                        $arr_perfiles = $m_perfil2->mostrar_Todos();
                         $tam_perfiles = count($arr_perfiles);
                         $combobit = "";
                         for($i = 0; $i < $tam_perfiles; $i++){
-                          if($c_usuario->get_Perfil() === $arr_perfiles[$i][0]){
+                          if($c_perfil2->get_Nombre() === $arr_perfiles[$i][0]){
                             $_perfi = $arr_perfiles[$i][0];
                             $combobit .=" <option value='".$arr_perfiles[$i][0]."' selected>".$arr_perfiles[$i][0]."</option>";
                           }
                           else $combobit .=" <option value='".$arr_perfiles[$i][0]."'>".$arr_perfiles[$i][0]."</option>";
                         }
-                        if($c_perfil->get_PermisoSistema())
+                        if($c_perfil2->get_PermisoSistema())
                           echo "<td><select name='perfi' class='select'>".$combobit."</select></td>";
-                        else echo "<td><select name='perfi' disabled>".$combobit."</select></td>";
+                        else echo "<td><select name='perfi' class='select' disabled>".$combobit."</select></td>";
                         echo "
                     </tr>
           <tr>

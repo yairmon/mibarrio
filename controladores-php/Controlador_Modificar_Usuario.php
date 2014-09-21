@@ -1,6 +1,8 @@
 <?php
 	include_once '../php/Controlador_Usuario.php';
 	include_once '../php/Modelo_Usuario.php';
+	include_once '../php/Controlador_Perfil.php';
+	include_once '../php/Modelo_Perfil.php';
 
 	$num_id = $_REQUEST['n_id'];
 	$nombres= $_REQUEST['nom'];
@@ -18,11 +20,15 @@
 	$email= $_REQUEST['e_mail'];
 	$genero= $_REQUEST['gene'];
 	$perfil= $_REQUEST['perfi'];
+	echo 'perfil = '.$perfil.'<p>';
 
+	$c_perfil = new Controlador_Perfil();
+	$m_perfil = new Modelo_Perfil($c_perfil);
+	$m_perfil->buscar_Perfil($perfil);
 	$c_usuario = new Controlador_Usuario();
 	$c_usuario->crear_usuario($num_id, $usuario, $password, $nombres, $apellidos, 
 						$direccion, $email, $tipoid, $ciudad, $pregunta, $respuesta, 
-						$celular, $edad, $foto, $genero, $perfil);
+						$celular, $edad, $foto, $genero, $c_perfil->get_ID());
 
 	$m_usuario = new Modelo_Usuario($c_usuario);
 

@@ -51,7 +51,7 @@
 			$c_perfil = new Controlador_Perfil();
 			$m_perfil = new Modelo_Perfil($c_perfil);
 
-			$m_perfil->buscar_Perfil($c_usuario->get_Perfil());
+			$m_perfil->buscar_Perfil2($c_usuario->get_Perfil());
 			$m_perfil->desconectarBD();
 
 				

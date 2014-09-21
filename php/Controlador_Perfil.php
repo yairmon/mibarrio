@@ -1,6 +1,7 @@
 <?php
 
 class Controlador_Perfil{
+	private $id;
 	private $nombre; 				// String
 	private $permiso_Sistema;		// boolean
 	private $permiso_Perfiles;		// boolean
@@ -19,6 +20,10 @@ class Controlador_Perfil{
 		$this->permiso_Facturacion = $p_Facturacion;
 		$this->permiso_Reportes = $p_Reportes;
 		
+	}
+	
+	public function get_ID(){
+		return $this->id;
 	}
 	
 	public function get_Nombre(){
@@ -50,6 +55,10 @@ class Controlador_Perfil{
 	}
 	
 	
+
+	public function set_ID($_id){
+		$this->id = $_id;
+	}
 
 	public function set_Nombre($nom){
 		$this->nombre = $nom;

@@ -11,7 +11,7 @@ class Modelo_Usuario{
 		$this->usuario = $control_Usuario;
 	}
 	
-	// Void
+	// Void: Buscar los datos del usuario dependiendo del Nombre de usuario
 	public function buscar_Usuario($user){
 		$sql = "select Documento, Nombres, Apellidos, Usuario, Password, Pregunta, Respuesta,
 			Tipo_Documento,Ciudad, Direccion, Edad,Foto,Telefono,Correo_Electronico,
@@ -39,6 +39,7 @@ class Modelo_Usuario{
 		}
 	}
 
+	// Void: Buscar los datos del usuario dependiendo del Documento de usuario
 	public function buscar_Usuario2($id){
 		$sql = "select Documento, Nombres, Apellidos, Usuario, Password, Pregunta, Respuesta,
 			Tipo_Documento,Ciudad, Direccion, Edad,Foto,Telefono,Correo_Electronico,
@@ -87,11 +88,10 @@ class Modelo_Usuario{
 	public function actualizar_Datos_Usuario($documento){
 		/*echo "<br>->docu->".$documento;
 		echo "<br>->".$this->usuario->get_Nid();*/
-		$sql = "UPDATE usuarios SET Documento='".$this->usuario->get_Nid()."',
+		$sql = "UPDATE perfiles, usuarios SET Documento='".$this->usuario->get_Nid()."',
 									Nombres='".$this->usuario->get_Nombres()."',
 									Apellidos = '".$this->usuario->get_Apellidos()."',
-									Usuario = '".$this->usuario->get_Usuario()."',
-									Password = '".$this->usuario->get_Password()."',
+									Usuario = '".$this->usuario->get_Usuario()."',									
 									Pregunta = '".$this->usuario->get_Pregunta()."',
 									Respuesta = '".$this->usuario->get_Respuesta()."',
 									Tipo_Documento = '".$this->usuario->get_TipoId()."',
@@ -102,8 +102,9 @@ class Modelo_Usuario{
 									Telefono = '".$this->usuario->get_Celular()."',
 									Correo_Electronico = '".$this->usuario->get_Email()."',
 									Genero = '".$this->usuario->get_Genero()."',
-									perfiles_Nombre = '".$this->usuario->get_Perfil()."'
-			 WHERE Documento='".$documento."'";
+									usuarios.perfiles_Nombre = perfiles.Nombre									
+			 WHERE Documento='".$documento."' AND perfiles.Nombre ='".$this->usuario->get_Perfil()."';";
+
 
 		$salida = 0;
 		// Validacion de los minimos
@@ -134,9 +135,7 @@ class Modelo_Usuario{
 	
 	// int: Actualiza la BD con los datos que hay en el Controlador: usuario
 	public function actualizar_Datos_Usuario2($documento){
-		/*echo "<br>->docu->".$documento;
-		echo "<br>->".$this->usuario->get_Nid();*/
-		$sql = "UPDATE usuarios SET Documento='".$this->usuario->get_Nid()."',
+		$sql = "UPDATE usuarios SET Documento=".$this->usuario->get_Nid().",
 									Nombres='".$this->usuario->get_Nombres()."',
 									Apellidos = '".$this->usuario->get_Apellidos()."',
 									Usuario = '".$this->usuario->get_Usuario()."',
@@ -151,8 +150,11 @@ class Modelo_Usuario{
 									Correo_Electronico = '".$this->usuario->get_Email()."',
 									Genero = '".$this->usuario->get_Genero()."',
 									perfiles_Nombre = '".$this->usuario->get_Perfil()."'
-			 WHERE Documento='".$documento."'";
+			 WHERE Documento=".$documento."";
 
+
+
+			 echo $sql;
 		$salida = 0;
 		// Validacion de los minimos
 		if(!(strlen($this->usuario->get_Nid()) > 7))			$salida = 2;
@@ -161,15 +163,12 @@ class Modelo_Usuario{
 		elseif(!(strlen($this->usuario->get_Usuario()) > 4))	$salida = 5;
 		elseif(!(strlen($this->usuario->get_Pregunta()) > 9))	$salida = 7;
 		elseif(!(strlen($this->usuario->get_Respuesta()) > 1))	$salida = 8;
-		elseif(!(strlen($this->usuario->get_TipoId()) > 1))		$salida = 9;
 		elseif(!(strlen($this->usuario->get_Ciudad()) > 1))		$salida = 10;
 		elseif(!(strlen($this->usuario->get_Direccion()) > 2))	$salida = 11;
 		elseif(!(strlen($this->usuario->get_Edad()) > 0))		$salida = 12;
 		elseif(!(strlen($this->usuario->get_Foto()) > 2))		$salida = 13;
 		elseif(!(strlen($this->usuario->get_Celular()) > 7))	$salida = 14;
 		elseif(!(strlen($this->usuario->get_Email()) > 6))		$salida = 15;
-		elseif(!(strlen($this->usuario->get_Genero()) > 0))		$salida = 16;
-		elseif(!(strlen($this->usuario->get_Perfil()) > 0))		$salida = 17;
 
 		
 		elseif($this->bd->insertar($sql))
@@ -181,7 +180,10 @@ class Modelo_Usuario{
 	
 	public function crear_Usuario(){
 		echo 'Valor de doc= '.$this->usuario->get_Nid();
-		$sql = "INSERT INTO usuarios VALUES ('".$this->usuario->get_Nid()."',
+		$sql = "INSERT INTO usuarios (`Documento`, `Nombres`, `Apellidos`, `Usuario`, 
+			`Password`, `Pregunta`, `Respuesta`, `Tipo_Documento`, `Ciudad`, `Direccion`, 
+			`Edad`, `Foto`, `Telefono`, `Correo_Electronico`, `Genero`, `perfiles_Nombre`) 
+		SELECT '".$this->usuario->get_Nid()."',
 									'".$this->usuario->get_Nombres()."',
 									'".$this->usuario->get_Apellidos()."',
 									'".$this->usuario->get_Usuario()."',
@@ -196,7 +198,8 @@ class Modelo_Usuario{
 									'".$this->usuario->get_Celular()."',
 									'".$this->usuario->get_Email()."',
 									'".$this->usuario->get_Genero()."',
-									'".$this->usuario->get_Perfil()."')";
+									ID 
+		FROM perfiles WHERE perfiles.Nombre='".$this->usuario->get_Perfil()."';";
 
 		$salida = 0;
 		// Validacion de los minimos
@@ -247,7 +250,10 @@ class Modelo_Usuario{
 
 	public function mostrar_Todos(){
 
-		$sql = "select * from usuarios";
+		$sql = "select * from usuarios";/*
+		$sql = "SELECT `Documento`, `Nombres`, `Apellidos`, `Usuario`, `Password`, `Pregunta`, `Respuesta`, 
+		`Tipo_Documento`, `Ciudad`, `Direccion`, `Edad`, `Foto`, `Telefono`, `Correo_Electronico`, `Genero`, 
+		`Nombre` FROM `usuarios`,`perfiles` WHERE (usuarios.perfiles_Nombre=perfiles.ID)";*/
 		$registros = $this->bd->consultar($sql);
 		$ar;
 

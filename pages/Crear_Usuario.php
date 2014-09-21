@@ -36,7 +36,12 @@ switch ($numero_error){
                             Tipo Documento:
                         </td>
                         <td>
-                        	<input type='text' name='tipo_id'  placeholder='Tipo Documento' required='required' maxlength=5/>
+                            <!-- Aqui el algoritmo para hacer un combobox para el genero -->
+                            <select name='tipo_id' class='select'>
+                                <option value='CC' selected>CC</option>
+                                <option value='TI'>TI</option>
+                                <option value='Pasap'>Pasaporte</option>
+                            </select>
                         </td>  
                     </tr>
                     <tr>
@@ -140,7 +145,11 @@ switch ($numero_error){
                             G&eacute;nero:
                         </td>
                         <td>
-                        	<input type='text' name='gene'  placeholder='G&eacute;nero' required='required' maxlength=1/>
+	                        <!-- Aqui el algoritmo para hacer un combobox para el genero -->
+	                        <select name='gene' class='select'>
+	                        	<option value='M' selected>M</option>
+	                        	<option value='F'>F</option>
+	                        </select>
                         </td>  
                     </tr>
                     <tr>
@@ -160,7 +169,7 @@ switch ($numero_error){
                         }
                         if($c_perfil->get_PermisoSistema())
                         	echo "<td><select name='perfi' class='select'>".$combobit."</select></td>";
-                        else echo "<td><select name='perfi' disabled>".$combobit."</select></td>";
+                        else echo "<td><select name='perfi' class='select' disabled>".$combobit."</select></td>";
                         echo "
                     </tr>
 					<tr>
