@@ -293,6 +293,58 @@ case 17:
     echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
     echo "<p>Error: Tama&ntilde;o 'Perfil' m&iacute;nimo: 1 caracter</div><br>";
 break;
+case 18:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Validaci&oacute;n: 'Documento' tipo de dato debe ser Num&eacute;rico</div><br>";
+break;
+case 19:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Validaci&oacute;n: 'Usuario' tipo de dato debe ser Alfanum&eacute;rico</div><br>";
+break;
+case 20:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Validaci&oacute;n: 'Nombres' tipo de dato debe ser Alfab&eacute;tico</div><br>";
+break;
+case 21:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Validaci&oacute;n: 'Apellidos' tipo de dato debe ser Alfab&eacute;tico</div><br>";
+break;
+case 22:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Validaci&oacute;n: 'Contrase&ntilde;a' tipo de dato debe ser Alfanum&eacute;rico</div><br>";
+break;
+case 23:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Validaci&oacute;n: 'Pregunta' tipo de dato debe ser Alfanum&eacute;rico</div><br>";
+break;
+case 24:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Validaci&oacute;n: 'Respuesta' tipo de dato debe ser Alfanum&eacute;rico</div><br>";
+break;
+case 25:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Validaci&oacute;n: 'Ciudad' tipo de dato debe ser Alfab&eacute;tico</div><br>";
+break;
+case 26:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Validaci&oacute;n: 'Edad' tipo de dato debe ser Num&eacute;rico</div><br>";
+break;
+case 27:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Validaci&oacute;n: 'Foto' tipo de dato debe ser Alfanum&eacute;rico</div><br>";
+break;
+case 28:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Validaci&oacute;n: 'Tel&eacute;fono' tipo de dato debe ser Num&eacute;rico</div><br>";
+break;
+case 29:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Validaci&oacute;n: 'Correo Electr&oacute;nico' tipo de dato debe ser Alfanum&eacute;rico</div><br>";
+break;
+case 30:
+    echo "<div class='login-help'><h1><i>No se ha modificado el usuario.</i></h1>";
+    echo "<p>Error: Validaci&oacute;n: 'Direcci&oacute;n' tipo de dato debe ser Alfanum&eacute;rico</div><br>";
+break;
 }
 
 

@@ -35,10 +35,11 @@
 	$num_error = 1;
 	if($perfil)
 		$num_error = $m_usuario->actualizar_Datos_Usuario2($_REQUEST['doc']);
+
 	/*echo '<p>docum = '.$_REQUEST['doc'];
 	echo '<p>numerror = '.$num_error;
-	echo '<p>perfil = '.$perfil;*/
-	if($num_error == 1){
+	echo '<p>perfil = '.$perfil;
+	*/if($num_error == 1){
 		header("Location: ../pages/Modificar_Usuario.php?gestion=1");
 	}else{
 		header("Location: ../pages/Modificar_Usuario.php?gestion=".$num_error);

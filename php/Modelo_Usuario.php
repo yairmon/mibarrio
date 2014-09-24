@@ -1,5 +1,6 @@
 <?php
 include_once 'bd.php';
+include_once '../Validacion_Datos.php';
 
 class Modelo_Usuario{
 	private $bd;		// Tipo: BD
@@ -107,6 +108,7 @@ class Modelo_Usuario{
 
 
 		$salida = 0;
+		$valida = new Validacion_Datos(); // <- Para validar los tipos de datos
 		// Validacion de los minimos
 		if(!(strlen($this->usuario->get_Nid()) > 7))			$salida = 2;
 		elseif(!(strlen($this->usuario->get_Nombres()) > 1))	$salida = 3;
@@ -124,6 +126,23 @@ class Modelo_Usuario{
 		elseif(!(strlen($this->usuario->get_Email()) > 6))		$salida = 15;
 		elseif(!(strlen($this->usuario->get_Genero()) > 0))		$salida = 16;
 		elseif(!(strlen($this->usuario->get_Perfil()) > 0))		$salida = 17;
+		// Validacion de los tipos de datos (Numérico,Alfabético,Alfanumérico)
+		elseif(!($valida->is_Number($this->usuario->get_Nid())))				$salida = 18;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Usuario())))		$salida = 19;
+		elseif(!($valida->is_Alphabetic($this->usuario->get_Nombres())))		$salida = 20;
+		elseif(!($valida->is_Alphabetic($this->usuario->get_Apellidos())))		$salida = 21;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Password())))		$salida = 22;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Pregunta())))		$salida = 23;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Respuesta())))	$salida = 24;
+		elseif(!($valida->is_Alphabetic($this->usuario->get_Ciudad())))			$salida = 25;
+		elseif(!($valida->is_Number($this->usuario->get_Edad())))				$salida = 26;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Foto())))			$salida = 27;
+		elseif(!($valida->is_Number($this->usuario->get_Celular())))			$salida = 28;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Email())))		$salida = 29;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Direccion())))	$salida = 30;
+
+
+		///////////////////////////////////////////////////////////////////////////
 
 		
 		elseif($this->bd->insertar($sql))
@@ -154,8 +173,9 @@ class Modelo_Usuario{
 
 
 
-			 echo $sql;
+		//echo $sql;
 		$salida = 0;
+		$valida = new Validacion_Datos(); // <- Para validar los tipos de datos
 		// Validacion de los minimos
 		if(!(strlen($this->usuario->get_Nid()) > 7))			$salida = 2;
 		elseif(!(strlen($this->usuario->get_Nombres()) > 1))	$salida = 3;
@@ -169,6 +189,22 @@ class Modelo_Usuario{
 		elseif(!(strlen($this->usuario->get_Foto()) > 2))		$salida = 13;
 		elseif(!(strlen($this->usuario->get_Celular()) > 7))	$salida = 14;
 		elseif(!(strlen($this->usuario->get_Email()) > 6))		$salida = 15;
+		// Validacion de los tipos de datos (Numérico,Alfabético,Alfanumérico)
+		elseif(!($valida->is_Number($this->usuario->get_Nid())))				$salida = 18;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Usuario())))		$salida = 19;
+		elseif(!($valida->is_Alphabetic($this->usuario->get_Nombres())))		$salida = 20;
+		elseif(!($valida->is_Alphabetic($this->usuario->get_Apellidos())))		$salida = 21;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Pregunta())))		$salida = 23;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Respuesta())))	$salida = 24;
+		elseif(!($valida->is_Alphabetic($this->usuario->get_Ciudad())))			$salida = 25;
+		elseif(!($valida->is_Number($this->usuario->get_Edad())))				$salida = 26;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Foto())))			$salida = 27;
+		elseif(!($valida->is_Number($this->usuario->get_Celular())))			$salida = 28;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Email())))		$salida = 29;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Direccion())))	$salida = 30;
+
+
+		///////////////////////////////////////////////////////////////////////////
 
 		
 		elseif($this->bd->insertar($sql))
@@ -202,6 +238,7 @@ class Modelo_Usuario{
 		FROM perfiles WHERE perfiles.Nombre='".$this->usuario->get_Perfil()."';";
 
 		$salida = 0;
+		$valida = new Validacion_Datos(); // <- Para validar los tipos de datos
 		// Validacion de los minimos
 		if(!(strlen($this->usuario->get_Nid()) > 7))			$salida = 2;
 		elseif(!(strlen($this->usuario->get_Nombres()) > 1))	$salida = 3;
@@ -219,6 +256,26 @@ class Modelo_Usuario{
 		elseif(!(strlen($this->usuario->get_Email()) > 6))		$salida = 15;
 		elseif(!(strlen($this->usuario->get_Genero()) > 0))		$salida = 16;
 		elseif(!(strlen($this->usuario->get_Perfil()) > 0))		$salida = 17;
+		// Validacion de los tipos de datos (Numérico,Alfabético,Alfanumérico)
+		elseif(!($valida->is_Number($this->usuario->get_Nid())))				$salida = 18;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Usuario())))		$salida = 19;
+		elseif(!($valida->is_Alphabetic($this->usuario->get_Nombres())))		$salida = 20;
+		elseif(!($valida->is_Alphabetic($this->usuario->get_Apellidos())))		$salida = 21;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Password())))		$salida = 22;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Pregunta())))		$salida = 23;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Respuesta())))	$salida = 24;
+		elseif(!($valida->is_Alphabetic($this->usuario->get_Ciudad())))			$salida = 25;
+		elseif(!($valida->is_Number($this->usuario->get_Edad())))				$salida = 26;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Foto())))			$salida = 27;
+		elseif(!($valida->is_Number($this->usuario->get_Celular())))			$salida = 28;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Email())))		$salida = 29;
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Direccion())))	$salida = 30;
+
+
+		///////////////////////////////////////////////////////////////////////////
+	
+
+
 
 		
 		elseif($this->bd->insertar($sql))
@@ -233,11 +290,13 @@ class Modelo_Usuario{
 			 WHERE Documento='".$documento."'";
 
 		$salida = 0;
-
+		$valida = new Validacion_Datos(); // <- Para validar los tipos de datos
 		// Validacion de los minimos
 		if(!(strlen($n_pass) > 4))
 			$salida = 6;
 		
+		// Validacion de los tipos de datos (Numérico,Alfabético,Alfanumérico)
+		elseif(!($valida->is_Alphanumeric($this->usuario->get_Password())))		$salida = 22;
 		elseif($this->bd->insertar($sql))
 			$salida = true;;
 

@@ -28,9 +28,9 @@
 
 	$num_error = 2;
 	$num_error = $m_usuario->crear_Usuario();
-	echo '<p>docum = '.$num_id;
+	/*echo '<p>docum = '.$num_id;
 	echo '<p>numerror = '.$num_error;
-	echo '<p>perfil = '.$perfil;
+	echo '<p>perfil = '.$perfil;*/
 	if($num_error == 1){
 		header("Location: ../pages/Crear_Usuario.php?gestion=1");
 	}else{
