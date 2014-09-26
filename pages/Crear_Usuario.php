@@ -309,6 +309,10 @@ case 30:
     echo "<div class='login-help'><h1><i>No se ha creado el usuario.</i></h1>";
     echo "<p>Error: Validaci&oacute;n: 'Direcci&oacute;n' tipo de dato debe ser Alfanum&eacute;rico</div><br>";
 break;
+case 31:
+    echo "<div class='login-help'><h1><i>No se ha creado el usuario.</i></h1>";
+    echo "<p>Error: El usuario con este Documento ya existe</div><br>";
+break;
 }
 
 

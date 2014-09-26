@@ -142,7 +142,8 @@ class Modelo_Usuario{
 
 		
 		elseif($this->bd->insertar($sql))
-			$salida = true;;
+			$salida = true;
+		else $salida = 31;
 		
 
 		return $salida;
@@ -200,7 +201,8 @@ class Modelo_Usuario{
 
 		
 		elseif($this->bd->insertar($sql))
-			$salida = true;;
+			$salida = true;
+		else $salida = 31;
 		
 
 		return $salida;
@@ -267,7 +269,8 @@ class Modelo_Usuario{
 
 		
 		elseif($this->bd->insertar($sql))
-			$salida = true;;
+			$salida = true;
+		else $salida = 31;
 		
 
 		return $salida;

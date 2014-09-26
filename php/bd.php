@@ -27,10 +27,10 @@ class BD{
 	}
 	
 	public function insertar($sql){
-		mysql_query($sql,$this->conexion) 
-		 or die("Problemas en el insertar".mysql_error());
-		mysql_close($this->conexion);
-		return true;
+		if(mysql_query($sql,$this->conexion) ){
+			mysql_close($this->conexion);
+			return true;
+		}else return false;
 	}
 	
 	public function consultar($sql){
