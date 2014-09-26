@@ -132,14 +132,10 @@ class Modelo_Usuario{
 		elseif(!($valida->is_Alphabetic($this->usuario->get_Nombres())))		$salida = 20;
 		elseif(!($valida->is_Alphabetic($this->usuario->get_Apellidos())))		$salida = 21;
 		elseif(!($valida->is_Alphanumeric($this->usuario->get_Password())))		$salida = 22;
-		elseif(!($valida->is_Alphanumeric($this->usuario->get_Pregunta())))		$salida = 23;
 		elseif(!($valida->is_Alphanumeric($this->usuario->get_Respuesta())))	$salida = 24;
 		elseif(!($valida->is_Alphabetic($this->usuario->get_Ciudad())))			$salida = 25;
 		elseif(!($valida->is_Number($this->usuario->get_Edad())))				$salida = 26;
-		elseif(!($valida->is_Alphanumeric($this->usuario->get_Foto())))			$salida = 27;
 		elseif(!($valida->is_Number($this->usuario->get_Celular())))			$salida = 28;
-		elseif(!($valida->is_Alphanumeric($this->usuario->get_Email())))		$salida = 29;
-		elseif(!($valida->is_Alphanumeric($this->usuario->get_Direccion())))	$salida = 30;
 
 
 		///////////////////////////////////////////////////////////////////////////
@@ -194,14 +190,10 @@ class Modelo_Usuario{
 		elseif(!($valida->is_Alphanumeric($this->usuario->get_Usuario())))		$salida = 19;
 		elseif(!($valida->is_Alphabetic($this->usuario->get_Nombres())))		$salida = 20;
 		elseif(!($valida->is_Alphabetic($this->usuario->get_Apellidos())))		$salida = 21;
-		elseif(!($valida->is_Alphanumeric($this->usuario->get_Pregunta())))		$salida = 23;
 		elseif(!($valida->is_Alphanumeric($this->usuario->get_Respuesta())))	$salida = 24;
 		elseif(!($valida->is_Alphabetic($this->usuario->get_Ciudad())))			$salida = 25;
 		elseif(!($valida->is_Number($this->usuario->get_Edad())))				$salida = 26;
-		elseif(!($valida->is_Alphanumeric($this->usuario->get_Foto())))			$salida = 27;
 		elseif(!($valida->is_Number($this->usuario->get_Celular())))			$salida = 28;
-		elseif(!($valida->is_Alphanumeric($this->usuario->get_Email())))		$salida = 29;
-		elseif(!($valida->is_Alphanumeric($this->usuario->get_Direccion())))	$salida = 30;
 
 
 		///////////////////////////////////////////////////////////////////////////
@@ -262,14 +254,10 @@ class Modelo_Usuario{
 		elseif(!($valida->is_Alphabetic($this->usuario->get_Nombres())))		$salida = 20;
 		elseif(!($valida->is_Alphabetic($this->usuario->get_Apellidos())))		$salida = 21;
 		elseif(!($valida->is_Alphanumeric($this->usuario->get_Password())))		$salida = 22;
-		elseif(!($valida->is_Alphanumeric($this->usuario->get_Pregunta())))		$salida = 23;
 		elseif(!($valida->is_Alphanumeric($this->usuario->get_Respuesta())))	$salida = 24;
 		elseif(!($valida->is_Alphabetic($this->usuario->get_Ciudad())))			$salida = 25;
 		elseif(!($valida->is_Number($this->usuario->get_Edad())))				$salida = 26;
-		elseif(!($valida->is_Alphanumeric($this->usuario->get_Foto())))			$salida = 27;
 		elseif(!($valida->is_Number($this->usuario->get_Celular())))			$salida = 28;
-		elseif(!($valida->is_Alphanumeric($this->usuario->get_Email())))		$salida = 29;
-		elseif(!($valida->is_Alphanumeric($this->usuario->get_Direccion())))	$salida = 30;
 
 
 		///////////////////////////////////////////////////////////////////////////
