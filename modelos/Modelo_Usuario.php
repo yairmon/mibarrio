@@ -1,6 +1,6 @@
 <?php
-include_once 'bd.php';
-include_once '../Validacion_Datos.php';
+include_once 'Modelo_Bd.php';
+include_once '../class/Validacion_Datos.php';
 
 class Modelo_Usuario{
 	private $bd;		// Tipo: BD

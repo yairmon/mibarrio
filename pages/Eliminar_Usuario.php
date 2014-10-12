@@ -22,7 +22,7 @@
 			break;
 			default:
 				echo "
-					<form action='../controladores-php/Controlador_Borrar_Usuario.php?documento=".$usuario."' method='post'>
+					<form action='../script/Borrar_Usuario.php?documento=".$usuario."' method='post'>
 					<h1>Est&aacute; seguro de que quiere eliminar el usuario ".$c_usuario2->get_Nombres()." ".
 					$c_usuario2->get_Apellidos()."?</h1><p>
 					<input type='submit' name='eliminar' class='login login-submit' value='Eliminar Usuario'>

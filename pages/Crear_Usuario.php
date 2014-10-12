@@ -12,7 +12,7 @@ switch ($numero_error){
  	$_perfi = $c_usuario->get_Perfil();
  	/*if($c_perfil->get_PermisoSistema()){
  		echo"<form action='../controladores-php/Controlador_Modificar_Usuario.php?perfi=0' method='post'>";
- 	}else*/ echo"<form action='../controladores-php/Controlador_Crear_Usuario.php' method='post'>";
+ 	}else*/ echo"<form action='../script/Crear_Usuario.php' method='post'>";
 
 		echo "<div class='CSSTableGenerator' >
                 <table >

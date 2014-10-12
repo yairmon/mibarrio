@@ -25,7 +25,7 @@ switch ($numero_error){
   $_perfi = $c_usuario2->get_Perfil();
   /*if($c_perfil->get_PermisoSistema()){
     echo"<form action='../controladores-php/Controlador_Modificar_Usuario.php?perfi=0' method='post'>";
-  }else*/ echo"<form action='../controladores-php/Controlador_Modificar_Usuario.php?doc=".$c_usuario2->get_Nid()."&perfi=".$_perfi."' method='post'>";
+  }else*/ echo"<form action='../script/Modificar_Usuario.php?doc=".$c_usuario2->get_Nid()."&perfi=".$_perfi."' method='post'>";
 
     echo "<div class='CSSTableGenerator' >
                 <table >

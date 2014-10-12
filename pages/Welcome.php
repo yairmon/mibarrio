@@ -1,5 +1,5 @@
 <?php
-
+	// incluye el menu y demas cosas contenidas en perfil.php
 	include ("perfil.php"); 
 	echo "<div class='contenido'>";
 	echo "";

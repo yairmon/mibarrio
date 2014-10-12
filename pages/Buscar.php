@@ -1,7 +1,8 @@
 <?php
-
+	//se incluye el archivo perfil.php que contiene el menu entre otros
 	include ("perfil.php"); 
 
+	//se inicia la div del contenido, el css indica donde va ubicada.
 	echo"<div class='contenido'>";
 
 	///////////////////////////////////////////////////////////////////////////
@@ -11,7 +12,7 @@
 	    return $needle === "" || strpos($haystack, $needle) === 0;
 	}
 	///////////////////////////////////////////////////////////////////////////
-	
+	//se asigna a la variable buscar el nombre
 	$buscar = strtolower($_REQUEST['nombre']);
 	echo '<p>Buscando el nombre: '.$buscar.'<p>';
 
@@ -40,13 +41,17 @@
 		</tr>
 			</font> 
 	";
+	//se verifica el permiso del usuario
  	if($c_perfil->get_PermisoSistema()){
+ 		// se inicia el form con el campo para buscar el usuario por el nombre
+ 		// y tambien el boton para enviar lo escrito por el usuario
  		echo"<form action='Buscar.php?page=1' method='post'>";
  		echo "
  			<input type='text' name='nombre' value='' placeholder='Escriba el nombre a buscar' required='required'/>
  			<input type='submit' name='buscar' class='login login-submit' value='Buscar'>
  			";
  		echo "</form>";
+ 		// se llaman a todos los usuarios
  		$usuarios_arr = $m_usuario->mostrar_Todos();
  		$usuarios;
  		$tam_usuarios = count($usuarios_arr);

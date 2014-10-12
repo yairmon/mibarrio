@@ -1,5 +1,5 @@
 <?php
-include_once 'bd.php';
+include_once 'Modelo_Bd.php';
 class Modelo_Logueo{
 	private $bd;		// Tipo: BD
 	private $logueo;	// Tipo: Controlador_Logueo

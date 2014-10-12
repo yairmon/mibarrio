@@ -1,13 +1,13 @@
 <?php
-
+	// llamado dl archivo que contiene los menus entre otras cosas.
 	include ("perfil.php"); 
 	
 	echo"<div class='contenido'>";
-
+	//se asigna a una variable el id contenido en el header
 	$nombre = $_REQUEST['id'];
-	$nombre2 = $nombre;
 	$c_perfil2 = clone $c_perfil;
 	$m_perfil2 = new Modelo_Perfil($c_perfil2);
+	// se busca el perfil seleccionado
 	$m_perfil2->buscar_Perfil($nombre);
 
 	/*echo '<td>
@@ -19,9 +19,11 @@
 		<p>factu = '.$c_perfil2->get_PermisoFacturacion().'
 		<p>report = '.$c_perfil2->get_PermisoReportes().'
 	';*/
-if($c_perfil->get_PermisoPerfiles()){
 
- 		echo"<form action='../controladores-php/Controlador_Modificar_Perfil.php?perfil=".$nombre2."' method='post'>";
+	// se verifican los permisos del usuario.
+if($c_perfil->get_PermisoPerfiles()){
+		// se imprime el form y la tabla que contendra los valores modificables del perfil que se selecciono
+ 		echo"<form action='../script/Modificar_Perfil.php?perfil=".$nombre."' method='post'>";
 
 
 		echo "<div class='CSSTableGenerator' >
@@ -44,7 +46,7 @@ if($c_perfil->get_PermisoPerfiles()){
                 </table>
             </div><br><br>";
 
-
+            // al dar submit envia los valores (1,0) de los "radio" los que tienen el mismo "name" solo se puede seleccionar una opcion
 		echo "<div class='CSSTableGenerator'><table>
 					<tr>
 					  <td><strong>Permiso</strong></td>
@@ -160,6 +162,7 @@ if($c_perfil->get_PermisoPerfiles()){
 		echo"</fomr>";
 	 		
 	 	}else
+	 		//en caso de que el permiso no sea correcto
 			echo "<h1><i>Esto no te pertenece.</i></h1>";
 
 	echo "</div>";	

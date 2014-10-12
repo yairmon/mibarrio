@@ -1,18 +1,22 @@
 <?php
-
+	//incluye el menu y demas cosas contenidas en perfil.php
 	include ("perfil.php"); 
-	
+	//inicio de la div de contenido, cajon central
 echo"<div class='contenido'>";
-
+//segun sea el caso en el header indica la acciona realizar
 $recibe_pagina=$_REQUEST['gestion'];
 
 switch ($recibe_pagina){ 
+	// en el caso de que gestion=crearPerfil
  case "crearPerfil":
  	//todo lo de crear perfil
+ 	//verifica los permisos de quien se logueo
  	if($c_perfil->get_PermisoPerfiles()){
- 		echo"<form action='../controladores-php/Controlador_Crear_Perfil.php' method='post'>";
+ 		//imprime el form y indica a donde mandara los campos
+ 		echo"<form action='../script/Crear_Perfil.php' method='post'>";
 
-
+ 		//div con scroll, que contendra la tabla con las opciones.
+ 		// el primer input contendra el campo para el nombre del nuevo perfil
 		echo "<div class='CSSTableGenerator' >
                 <table >
                 	<tr>
@@ -32,7 +36,8 @@ switch ($recibe_pagina){
                 </table>
             </div><br><br>";
 
-
+         // se imprime otra tabla que contendra los radio (casillas de opcion) al ser seleccionadas y dar sumit, envian el value.
+         //los radio que tengan el mismo "name" solo pueden seleccionarese una opcion.   
 		echo "<div class='CSSTableGenerator'><table>
 					<tr>
 					  <td><strong>Permiso</strong></td>
@@ -101,14 +106,17 @@ switch ($recibe_pagina){
 
  	}else
 		echo "<h1><i>Esto no te pertenece.</i></h1>";
+		//en caso no haber tenido permiso y haber ingresado a la url, imprime el error
 
 break;
+	// en caso de que gestion=exito, devuelto por el controlador, imprime exito
 case "exito":
  	if($c_perfil->get_PermisoPerfiles()){
 		echo "<h1><i>Se ha creado el perfil.</i></h1>";
  	}else
 		echo "<h1><i>Esto no te pertenece.</i></h1>";
 break; 
+	// aqui van los errores devueltos a la hora de crear el perfil
 case "error":
  	if($c_perfil->get_PermisoPerfiles()){
 		echo "<h1><i>No se ha creado el perfil.</i></h1>";
@@ -127,12 +135,14 @@ case "error2":
  	}else
 		echo "<h1><i>Esto no te pertenece.</i></h1>";
 break; 
+	// en caso de haber modificado el perfil y tener exito
 case "exito3":
  	if($c_perfil->get_PermisoPerfiles()){
 		echo "<h1><i>Se ha modificado el perfil.</i></h1>";
  	}else
 		echo "<h1><i>Esto no te pertenece.</i></h1>";
 break; 
+	// errores a la hora de crear el perfil devuelven esto
 case "error3":
  	if($c_perfil->get_PermisoPerfiles()){
 		echo "<h1><i>No se ha modificado el perfil.</i></h1>";
@@ -163,14 +173,20 @@ case "error7":
  	}else
 		echo "<h1><i>Esto no te pertenece.</i></h1>";
 break;
+
 case "visualizar":
   		
 		//include_once '../controladores-php/selecionar.php';
-			
+
+		// en el caso de que gestion= visualizar muestra los nombres de todos los perfiles almacenados, en un "select"
+		// o combobox
+
+		// m_perfil ya ha sido creado en perfil.php, se llama al metodo que muestra todos los perfiles 	
 		$data=$m_perfil->mostrar_Todos();
 		
 			
-
+		//inicio del form con una tabla pequeña que contendra el combo y el submit para enviar el nombre a esta misma pagina 
+		// con otro header en gestion
 		echo"<form action='Crear_Perfil.php?gestion=visualizar-seleccion' method='post'>
 
 		<div class='CSSTableGenerator'><table>
@@ -202,7 +218,10 @@ case "visualizar":
 
 break; 
 case "visualizar-seleccion":
-		
+		// despues de haber seleccionado el perfil se recarga la pagina con gestion=visualizar-seleccion
+
+		// instnacias de las clases necesarias para visualizar el perfil seleccionado, realiza la busqueda 
+		// en base al nombre.
 		$consulta_perfil = new Controlador_Perfil();
 		$mConsulta_perfil = new Modelo_Perfil($consulta_perfil);
 		$mConsulta_perfil->buscar_Perfil($_REQUEST['Nombre_perfil']);
@@ -210,6 +229,8 @@ case "visualizar-seleccion":
 
 		$namePE = $consulta_perfil->get_Nombre();
 
+		// imprime una tabla con la informacion del perfil (permisos "booleanos", y nombre "string")
+		// en caso de que un permiso sea true, imprime "si", caso contrario "no".
 		echo "
 
 		<div class='CSSTableGenerator'><table>
@@ -311,6 +332,7 @@ case "visualizar-seleccion":
 			</table></div>";
 break;		
 default:
+// en caso no presentarse ninguna de las opciones anteriores imprime esto
 echo "<h1><b>Bienvenido, ".$c_usuario->get_Nombres().".</b></h1>";
 }
 

@@ -1,5 +1,5 @@
 <?php
-include_once 'bd.php';
+include_once 'Modelo_Bd.php';
 
 class Modelo_Perfil{
 	private $bd;		// Tipo: BD
@@ -100,7 +100,7 @@ class Modelo_Perfil{
 
 	}
 	
-	// Void: Busca en la BD el perfil (dependiendo del ID)  y lo guarda en el Controlador
+	// Void: Busca en la BD el perfil (dependiendo del nombre<)  y lo guarda en el Controlador
 	public function buscar_Perfil($perfi){
 		$sql = "select ID,Nombre,Sistema,Perfiles,Productos,Inventario,Facturacion, Reportes
 	                        from perfiles where Nombre='$perfi'";
@@ -118,7 +118,7 @@ class Modelo_Perfil{
 		}
 	}
 	
-	// Void: Busca en la BD el perfil (dependiendo del nombre) y lo guarda en el Controlador
+	// Void: Busca en la BD el perfil (dependiendo dela ID) y lo guarda en el Controlador
 	public function buscar_Perfil2($perfi){
 		$sql = "select Nombre,Sistema,Perfiles,Productos,Inventario,Facturacion, Reportes
 	                        from perfiles where ID='$perfi'";
